@@ -1,2 +1,0 @@
-GitHub speed compare test
-format=txt
