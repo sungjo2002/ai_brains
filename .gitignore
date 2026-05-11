@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Secrets / env
+.env
+*.env
+!.env.example
+
+# Databases / local data
+*.db
+*.sqlite
+*.sqlite3
+
+# Workforce runtime data
+workforce/pc/data/backup/
+workforce/pc/data/config/app_settings.json
+workforce/pc/data/config/server_api.json
+workforce/pc/data/config/update_settings.json
+workforce/server/.env
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
