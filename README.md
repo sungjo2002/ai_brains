@@ -36,9 +36,45 @@ server: server_번호_영문설명.zip
 mobile: mobile_번호_영문설명.zip
 ```
 
-모바일 수정본을 적용할 때는 기본적으로 `/root/apps/mobile_app`에 압축을 풀고 `/var/www/mobile_live`로 배포하는 명령어를 제공합니다.
+## 콘솔 명령어 제공 규칙
 
-서버 수정본을 적용할 때는 기본적으로 `/root/apps/green_api`에 압축을 풀고 py_compile 확인 후 `green_api` 서비스를 재시작하는 명령어를 제공합니다.
+콘솔 명령어는 사용자가 기존에 사용하던 방식으로 제공합니다.
+
+```text
+- 압축 해제 자체 명령어를 길게 주는 방식이 아님
+- ZIP 압축을 푼 뒤 파일이 이미 작업 폴더에 들어간 상태를 기준으로 함
+- 한 줄씩 복사해서 입력할 수 있게 제공함
+- 모바일은 /root/apps/mobile_app 기준
+- 서버는 /root/apps/green_api 기준
+```
+
+모바일 수정본 적용 명령어 기본 형식:
+
+```bash
+cd /root/apps/mobile_app
+rm -rf /var/www/mobile_live/*
+cp -r ./* /var/www/mobile_live/
+chown -R www-data:www-data /var/www/mobile_live
+find /var/www/mobile_live -type d -exec chmod 755 {} \;
+find /var/www/mobile_live -type f -exec chmod 644 {} \;
+systemctl restart nginx
+systemctl status nginx --no-pager -l
+```
+
+서버 수정본 적용 명령어 기본 형식:
+
+```bash
+cd /root/apps/green_api
+python3 -m py_compile app/permission_guard.py
+python3 -m py_compile app/routes/mobile_auth.py
+python3 -m py_compile app/routes/employees.py
+python3 -m py_compile app/routes/vehicles.py
+python3 -m py_compile app/routes/attendance_records.py
+python3 -m py_compile app/routes/attendance_month_lock.py
+systemctl restart green_api
+systemctl status green_api --no-pager -l
+curl -s http://127.0.0.1:8000/api/health
+```
 
 ## 중요 보안 기준
 
