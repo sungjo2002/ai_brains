@@ -18,6 +18,7 @@
 - 한 줄씩 복사해서 입력할 수 있게 제공한다.
 - 서버와 모바일 명령어를 섞지 않는다.
 - 기본 적용 명령어와 문제 있을 때만 쓰는 추가 명령어를 분리한다.
+- 현재 VPS에는 `node` 명령어가 없으므로 모바일 적용 명령어에 `node --check app.js`를 넣지 않는다.
 
 ## 실제 VPS 폴더 기준
 
@@ -102,10 +103,6 @@ cd /root/apps/mobile_app
 ```
 
 ```bash
-node --check app.js
-```
-
-```bash
 rm -rf /var/www/mobile_live/*
 ```
 
@@ -173,5 +170,5 @@ PC 확인은 PC 프로그램 확인이 아니라 PC 브라우저에서 모바일
 현재 모바일 확인 주소 예시:
 
 ```text
-https://sungjo2003.cafe24.com/mobile-live/?v=85
+https://sungjo2003.cafe24.com/mobile-live/?v=92
 ```
