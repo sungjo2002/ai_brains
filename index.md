@@ -1,16 +1,24 @@
-# ai_brains 문서 목록
+# legacy index
 
-이 저장소는 작업내용 저장소로 사용한다.
+이 파일은 구형 문서 목록 파일이다.
 
-## 핵심 파일
+현재 기준에서는 `PROJECTS.md`를 사용한다.
 
-- `AGENTS.md`: 저장소 사용 규칙과 작업 기준.
-- `log.md`: 날짜별 변경 이력.
-- `workforce/README.txt`: 인력관리 프로그램 현재 작업 상태, 완료/진행/보류/오류, 다음 작업, 테스트 결과.
-- `workforce/지식.txt`: 인력관리 프로그램 고정 규칙, 서버 구조, 파일명 규칙, 배포 명령어, 판단 기준.
+## 새 시작 순서
 
-## 사용 기준
+```text
+AGENTS.md
+PROJECTS.md
+projects/P001/META.md
+projects/P001/CURRENT.md
+projects/P001/TASKS.md
+projects/P001/RULES.md
+projects/P001/COMMANDS.md
+projects/P001/FILES.md
+projects/P001/TESTS.md
+```
 
-- 새 대화에서 작업을 이어갈 때는 먼저 `AGENTS.md`를 확인한다.
-- 인력관리 프로그램 작업은 `workforce/README.txt`와 `workforce/지식.txt`를 기준으로 이어간다.
-- 의미 있는 저장/수정/정리 작업은 `log.md`에 날짜별로 기록한다.
+## 안내
+
+기존 `workforce/README.txt`, `workforce/지식.txt`, `log.md` 기준은 더 이상 최신 기준이 아니다.
+프로젝트 목록은 `PROJECTS.md`를 기준으로 본다.
