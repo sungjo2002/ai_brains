@@ -5,14 +5,14 @@
 ## 최신 기준 파일
 
 - PC: `pc_33_common_refresh_after_save_fix.zip`
-- Server: `server_14_snapshot_auth_lock.zip`
-- Mobile: `mobile_19_remove_fallback_login.zip`
+- Server: `server_15_remove_default_admin_seed.zip`
+- Mobile: `mobile_26_restore_status_cards_original.zip`
 
 ## 다음 번호
 
 - PC: `pc_34`
-- Server: `server_15`
-- Mobile: `mobile_20`
+- Server: `server_16`
+- Mobile: `mobile_27`
 
 ## 현재 핵심 상태
 
@@ -21,7 +21,6 @@
 - 내부 저장, 불러오기, 병합, 삭제 반영은 자동 처리하되 사용자 화면에는 복잡한 버튼을 늘리지 않는다.
 - PC ↔ 모바일 동기화는 테스트 완료 기준으로 본다.
 - PC ↔ PC 서버 백업/복구 동기화 테스트는 아직 별도 확인이 필요하다.
-- 서버 `server_14`와 모바일 `mobile_19`는 최신 작업 파일로 본다.
 - 실제 VPS 반영 여부는 콘솔 적용 후 확인한다.
 
 ## 최신 PC 작업 내용
@@ -34,19 +33,32 @@
 
 ## 최신 서버 작업 내용
 
-### server_14_snapshot_auth_lock.zip
+### server_15_remove_default_admin_seed.zip
 
-- `server_13_employee_delete_tombstone_fix.zip`를 기준으로 만든 서버 보강 수정본이다.
-- 전체 스냅샷 조회 흐름을 운영 기준에 맞게 정리했다.
-- 서버 데이터 조회 기준을 더 안전하게 맞추는 것이 목적이다.
+- `server_14_snapshot_auth_lock.zip`를 기준으로 만든 서버 보강 수정본이다.
+- 서버의 기본 관리자 계정 자동 생성 흐름을 비활성화했다.
+- 삭제된 기본 계정이 서버 재시작 후 다시 생기지 않도록 막는 것이 목적이다.
+- 실제 확인 결과 서버는 정상 실행 중이고, 삭제된 기본 계정 로그인은 `401`로 차단되는 상태다.
 
 ## 최신 모바일 작업 내용
 
-### mobile_19_remove_fallback_login.zip
+### mobile_26_restore_status_cards_original.zip
 
-- `mobile_18_home_worker_quick_info_memo_box.zip`를 기준으로 만든 모바일 로그인 정리 수정본이다.
-- 모바일 로그인 흐름을 서버 기준으로 단순화했다.
-- 모바일 앱 버전은 `v=85` 기준이다.
+- `mobile_22_home_responsive_layout_fix.zip` 기준으로 상태 카드 영역을 정상 동작 상태로 복구한 수정본이다.
+- `mobile_23`, `mobile_24`, `mobile_25`에서 시도한 상태 카드 아이콘/배경/상단 사용자 표시 수정은 버튼 액션과 아이콘 표시 문제로 폐기한다.
+- 상태 카드/아이콘/버튼 액션은 원래 방식으로 복구한다.
+- 홈 반응형 레이아웃 수정은 유지한다.
+- 모바일 앱 버전은 `v=92` 기준이다.
+
+## 모바일 중간 수정 기록 요약
+
+- `mobile_20_remove_login_test_account_hint.zip`: 로그인 화면 테스트 계정 안내 문구 제거, `v=86`.
+- `mobile_21_home_bottom_blank_space_fix.zip`: 홈 하단 빈공간 수정 시도, 상단 밀림 문제가 있어 폐기.
+- `mobile_22_home_responsive_layout_fix.zip`: 홈 반응형 레이아웃 기준 수정, `v=88`.
+- `mobile_23_status_icon_and_admin_name_fix.zip`: 상태 아이콘/사용자명 수정 시도, 실제 화면 반영 부족으로 폐기.
+- `mobile_24_status_icon_real_class_and_user_name_fix.zip`: 실제 클래스 기준 재수정 시도, 권한명 표시와 아이콘 문제로 폐기.
+- `mobile_25_status_card_background_fix.zip`: 상태 카드 배경 수정 시도, 버튼 액션과 아이콘 표시 문제로 폐기.
+- `mobile_26_restore_status_cards_original.zip`: 상태 카드 영역을 정상 동작 기준으로 복구한 최신 기준.
 
 ## 업로드/적용 방식 기준
 
@@ -58,6 +70,7 @@
 - 모바일 작업 위치는 `/root/apps/mobile_app`다.
 - 모바일 실제 서비스 위치는 `/var/www/mobile_live`다.
 - `/root/apps/green_app`은 구버전 또는 별도 앱 가능성 위치로 보고, 현재 서버 API 작업 기준에서 제외한다.
+- VPS에 `node` 명령어가 없으므로 모바일 적용 명령어에는 `node --check app.js`를 포함하지 않는다.
 
 ## 이미지 동기화 기준
 
