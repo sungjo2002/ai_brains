@@ -50,11 +50,14 @@
 
 ## 업로드/적용 방식 기준
 
-- 사용자는 ZIP을 PC에서 먼저 압축 해제한 뒤 폴더째 VPS에 업로드하는 방식을 사용한다.
-- VPS 콘솔 명령어는 압축 해제가 이미 끝나 있고, 파일이 작업 폴더에 업로드된 상태를 기준으로 제공한다.
-- 서버 작업 폴더 예시는 `/root/apps/server_14_snapshot_auth_lock/`이다.
-- 모바일 작업 폴더 예시는 `/root/apps/mobile_19_remove_fallback_login/`이다.
-- 실제 운영 위치는 서버 `/root/apps/green_api`, 모바일 `/var/www/mobile_live` 기준이다.
+- 사용자는 ZIP을 PC에서 먼저 압축 해제한 뒤 파일을 실제 VPS 작업 폴더에 직접 업로드하는 방식을 사용한다.
+- 서버 수정본은 `/root/apps/green_api/`에 직접 업로드한다.
+- 모바일 수정본은 `/root/apps/mobile_app/`에 직접 업로드한다.
+- VPS 콘솔 명령어는 압축 해제가 이미 끝나 있고, 파일이 실제 작업 폴더에 업로드된 상태를 기준으로 제공한다.
+- 서버 실제 운영 위치는 `/root/apps/green_api`다.
+- 모바일 작업 위치는 `/root/apps/mobile_app`다.
+- 모바일 실제 서비스 위치는 `/var/www/mobile_live`다.
+- `/root/apps/green_app`은 구버전 또는 별도 앱 가능성 위치로 보고, 현재 서버 API 작업 기준에서 제외한다.
 
 ## 이미지 동기화 기준
 
