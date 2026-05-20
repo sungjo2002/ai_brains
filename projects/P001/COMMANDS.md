@@ -5,57 +5,59 @@
 ## 콘솔 명령어 제공 원칙
 
 - 서버 파일 또는 모바일 파일을 수정해 새 ZIP을 만들었으면 답변 마지막에 반드시 적용용 콘솔 명령어를 함께 제공한다.
-- 콘솔 명령어는 사용자가 PC에서 ZIP 압축을 풀고, 압축 해제된 폴더를 VPS 작업 폴더에 이미 업로드한 상태를 기준으로 제공한다.
+- 콘솔 명령어는 사용자가 PC에서 ZIP 압축을 풀고, 압축 해제된 파일을 실제 VPS 작업 폴더에 이미 업로드한 상태를 기준으로 제공한다.
 - VPS 콘솔 명령어에는 `unzip` 명령어를 넣지 않는다.
+- 중간 적용 폴더 예시인 `/root/apps/server_번호_수정명/`, `/root/apps/mobile_번호_수정명/` 기준 명령어를 사용하지 않는다.
 - 긴 압축 해제, 백업, 업로드 통합 명령어 방식은 사용하지 않는다.
 - 한 줄씩 복사해서 입력할 수 있게 제공한다.
 - 서버와 모바일 명령어를 섞지 않는다.
 - 기본 적용 명령어와 문제 있을 때만 쓰는 추가 명령어를 분리한다.
-- 수정 파일명과 작업 폴더명은 최신 번호 기준으로 맞춘다.
 
-## 작업 폴더 기준
+## 실제 VPS 폴더 기준
 
-서버 수정본 업로드 위치 예시:
-
-```text
-/root/apps/server_번호_수정명/
-```
-
-모바일 수정본 업로드 위치 예시:
-
-```text
-/root/apps/mobile_번호_수정명/
-```
-
-운영 서버 위치:
+서버 API 실제 위치:
 
 ```text
 /root/apps/green_api
 ```
 
-모바일 라이브 위치:
-
-```text
-/var/www/mobile_live
-```
-
-모바일 작업 위치:
+모바일 작업 폴더 실제 위치:
 
 ```text
 /root/apps/mobile_app
 ```
 
+모바일 라이브 실제 위치:
+
+```text
+/var/www/mobile_live
+```
+
+구버전 또는 별도 앱 가능성 있는 위치:
+
+```text
+/root/apps/green_app
+```
+
+## 업로드 기준
+
+서버 수정본은 PC에서 ZIP 압축을 푼 뒤, 압축 해제된 서버 파일들을 아래 위치에 직접 업로드한다.
+
+```text
+/root/apps/green_api
+```
+
+모바일 수정본은 PC에서 ZIP 압축을 푼 뒤, 압축 해제된 모바일 파일들을 아래 위치에 직접 업로드한다.
+
+```text
+/root/apps/mobile_app
+```
+
+업로드 후 VPS 콘솔에서는 복사 명령어를 최소화하고, 검사와 재시작 또는 라이브 반영만 진행한다.
+
 ## Server 수정 후 기본 적용 형식
 
-서버 수정본은 압축 해제된 폴더가 `/root/apps/server_번호_수정명/`에 업로드된 상태를 기준으로 한다.
-
-```bash
-cd /root/apps
-```
-
-```bash
-cp -r /root/apps/server_번호_수정명/* /root/apps/green_api/
-```
+서버 수정본이 `/root/apps/green_api/`에 이미 업로드된 상태를 기준으로 한다.
 
 ```bash
 cd /root/apps/green_api
@@ -77,24 +79,24 @@ systemctl status green_api --no-pager -l
 curl -s http://127.0.0.1:8000/api/health
 ```
 
-## Mobile 수정 후 기본 적용 형식
+## Server 추가 확인
 
-모바일 수정본은 압축 해제된 폴더가 `/root/apps/mobile_번호_수정명/`에 업로드된 상태를 기준으로 한다.
+서버 API 외부 확인이 필요할 때만 사용한다.
 
 ```bash
-cd /root/apps/mobile_번호_수정명
+curl -i https://sungjo2003.cafe24.com/api/employees/snapshot
+```
+
+## Mobile 수정 후 기본 적용 형식
+
+모바일 수정본이 `/root/apps/mobile_app/`에 이미 업로드된 상태를 기준으로 한다.
+
+```bash
+cd /root/apps/mobile_app
 ```
 
 ```bash
 node --check app.js
-```
-
-```bash
-rm -rf /root/apps/mobile_app/*
-```
-
-```bash
-cp -r /root/apps/mobile_번호_수정명/* /root/apps/mobile_app/
 ```
 
 ```bash
@@ -150,16 +152,16 @@ PC 확인은 PC 프로그램 확인이 아니라 PC 브라우저에서 모바일
 
 ## 현재 버전 예시
 
-현재 서버 14 적용 폴더 예시:
+현재 서버 실제 업로드 위치:
 
 ```text
-/root/apps/server_14_snapshot_auth_lock/
+/root/apps/green_api
 ```
 
-현재 모바일 19 적용 폴더 예시:
+현재 모바일 실제 업로드 위치:
 
 ```text
-/root/apps/mobile_19_remove_fallback_login/
+/root/apps/mobile_app
 ```
 
 현재 모바일 확인 주소 예시:
