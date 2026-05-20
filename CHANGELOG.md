@@ -9,6 +9,8 @@
 - 프로젝트별 작업은 `projects/Pxxx/` 구조로 관리하기로 결정.
 - 첫 번째 프로젝트는 `projects/P001/`로 정리.
 - 최신 작업 기준은 P001 문서로 이관.
+- 기존 `workforce/지식.txt`의 규칙과 명령어 기준을 `projects/P001/RULES.md`, `projects/P001/COMMANDS.md`로 이관.
+- 기존 `workforce/지식.txt`는 구형 안내 파일로 변경.
 
 ## 2026-05-11
 
