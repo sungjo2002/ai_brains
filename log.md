@@ -1,8 +1,16 @@
-# 변경 이력
+# legacy log
 
-## 2026-05-11
+이 파일은 구형 변경 이력 파일이다.
 
-- `AGENTS.md` 생성 확인.
-- 저장소 직접 읽기/쓰기 테스트 완료.
-- 새창 작업을 위한 기본 파일 구조 생성 시작.
-- `index.md`, `log.md`, `workforce/README.txt`, `workforce/지식.txt` 기본 파일 생성.
+현재 기준에서는 `CHANGELOG.md`를 사용한다.
+
+## 새 기준
+
+- 저장소 전체 변경 이력: `CHANGELOG.md`
+- P001 작업 기록: `projects/P001/HISTORY.md`
+- P001 최신 상태: `projects/P001/CURRENT.md`
+
+## 안내
+
+기존 기록은 새 구조로 이관되었다.
+앞으로 변경 이력은 `CHANGELOG.md`에 기록한다.
