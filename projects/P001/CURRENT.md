@@ -5,49 +5,56 @@
 ## 최신 기준 파일
 
 - PC: `pc_33_common_refresh_after_save_fix.zip`
-- Server: `server_13_employee_delete_tombstone_fix.zip`
-- Mobile: `mobile_18_home_worker_quick_info_memo_box.zip`
+- Server: `server_14_snapshot_auth_lock.zip`
+- Mobile: `mobile_19_remove_fallback_login.zip`
 
 ## 다음 번호
 
 - PC: `pc_34`
-- Server: `server_14`
-- Mobile: `mobile_19`
+- Server: `server_15`
+- Mobile: `mobile_20`
 
 ## 현재 핵심 상태
 
-- PC1이 메인 PC가 아니라, 어느 PC 또는 모바일에서 등록, 수정, 삭제하더라도 서버를 기준으로 다른 PC와 모바일에 반영되는 구조로 본다.
+- 서버 기준으로 PC와 모바일 데이터를 동기화하는 구조를 유지한다.
 - 사용자는 동기화 버튼을 기존처럼 하나만 사용한다.
-- 내부적으로는 저장, 불러오기, 병합, 삭제 반영을 자동 처리하되 사용자 화면에는 복잡한 버튼을 늘리지 않는다.
+- 내부 저장, 불러오기, 병합, 삭제 반영은 자동 처리하되 사용자 화면에는 복잡한 버튼을 늘리지 않는다.
 - PC ↔ 모바일 동기화는 테스트 완료 기준으로 본다.
 - PC ↔ PC 서버 백업/복구 동기화 테스트는 아직 별도 확인이 필요하다.
+- 서버 `server_14`와 모바일 `mobile_19`는 최신 작업 파일로 본다.
+- 실제 VPS 반영 여부는 콘솔 적용 후 확인한다.
 
 ## 최신 PC 작업 내용
 
 ### pc_33_common_refresh_after_save_fix.zip
 
-- 사업자, 사업장, 근로자, 차량 등 등록/수정/삭제 또는 동기화 후 일부 화면 목록이 바로 갱신되지 않는 문제를 공통 새로고침 방식으로 보강했다.
-- 예: A사업자에 B사업장을 추가했는데 PC2 동기화 직후 안 보이고, 다른 저장 동작 후에야 B사업장이 표시되는 문제.
-- `src/main_window.py`에서 데이터 변경 신호를 감지하고 숨겨진 관련 화면들의 새로고침을 예약하는 방향으로 수정했다.
-- 현재 작업 중인 화면은 직접 흔들지 않고, 숨겨진 화면 위주로 갱신해 입력 중 화면 흔들림을 줄이는 방향이다.
+- 저장, 삭제, 동기화 후 이미 생성된 화면 목록이 오래된 상태로 남는 문제를 공통 새로고침 방식으로 보강했다.
+- 현재 작업 중인 화면은 직접 흔들지 않고, 숨겨진 화면 위주로 갱신하는 방향이다.
 - 저장 조건, 권한 조건, 동기화 판단, 계산식, 서버 API 조건은 건드리지 않았다.
 
 ## 최신 서버 작업 내용
 
-### server_13_employee_delete_tombstone_fix.zip
+### server_14_snapshot_auth_lock.zip
 
-- PC에서 서버 전체 저장/불러오기 관련 문제를 확인했다.
-- 다른 PC에서 서버 전체 불러오기 실패가 발생했다.
-- 삭제 동기화에서 tombstone 방식 보강이 필요하다고 판단했다.
-- 삭제한 근로자 목록이 다른 PC/모바일에 남거나, 동기화 실패 건수로 표시되는 문제를 수정 대상으로 잡았다.
-- 최종 서버 기준은 `server_13_employee_delete_tombstone_fix.zip`로 정리한다.
+- `server_13_employee_delete_tombstone_fix.zip`를 기준으로 만든 서버 보강 수정본이다.
+- 전체 스냅샷 조회 흐름을 운영 기준에 맞게 정리했다.
+- 서버 데이터 조회 기준을 더 안전하게 맞추는 것이 목적이다.
 
 ## 최신 모바일 작업 내용
 
-### mobile_18_home_worker_quick_info_memo_box.zip
+### mobile_19_remove_fallback_login.zip
 
-- 모바일 최신 기준 파일로 기록한다.
-- 세부 수정 내용은 실제 파일 또는 추가 기록 확인이 필요하다.
+- `mobile_18_home_worker_quick_info_memo_box.zip`를 기준으로 만든 모바일 로그인 정리 수정본이다.
+- 모바일 로그인 흐름을 서버 기준으로 단순화했다.
+- 모바일 앱 버전은 `v=85` 기준이다.
+
+## 업로드/적용 방식 기준
+
+- 사용자는 ZIP을 PC에서 먼저 압축 해제한 뒤 폴더째 VPS에 업로드하는 방식을 사용한다.
+- VPS 콘솔 명령어는 압축 해제가 이미 끝나 있고, 파일이 작업 폴더에 업로드된 상태를 기준으로 제공한다.
+- 서버 작업 폴더 예시는 `/root/apps/server_14_snapshot_auth_lock/`이다.
+- 모바일 작업 폴더 예시는 `/root/apps/mobile_19_remove_fallback_login/`이다.
+- 실제 운영 위치는 서버 `/root/apps/green_api`, 모바일 `/var/www/mobile_live` 기준이다.
 
 ## 이미지 동기화 기준
 
@@ -84,4 +91,4 @@
 - 관리자/권한
 - 공휴일 자동갱신 설정
 - 공휴일 자동갱신 인증키
-- 외부 API 인증키 등 회사 운영 공용 설정값
+- 회사 운영 공용 설정값
