@@ -7,7 +7,55 @@
 - 저장소 구조를 여러 AI와 코딩 도구가 공통으로 사용할 수 있는 방식으로 정리했다.
 - 루트 기준 파일을 `AGENTS.md`, `README.md`, `PROJECTS.md`, `RULES.md`, `CHANGELOG.md`로 정리했다.
 - P001 프로젝트 폴더를 생성하고 현재 상태, 다음 작업, 규칙, 명령어, 테스트, 파일 지도, 결정 사항을 분리했다.
-- 최신 기준은 PC `pc_33_common_refresh_after_save_fix.zip`, 서버 `server_13_employee_delete_tombstone_fix.zip`, 모바일 `mobile_18_home_worker_quick_info_memo_box.zip`로 정리했다.
+- 최신 기준은 PC `pc_33_common_refresh_after_save_fix.zip`, 서버 `server_15_remove_default_admin_seed.zip`, 모바일 `mobile_26_restore_status_cards_original.zip`로 정리했다.
+
+### server_14_snapshot_auth_lock.zip
+
+- `GET /api/employees/snapshot` 조회를 로그인 전에는 볼 수 없도록 보강했다.
+- 로그인 없이 snapshot 조회 시 `401`이 반환되는 것을 확인했다.
+- 서버 상태는 `green_api active running`, `/api/health` 응답 정상으로 확인했다.
+
+### server_15_remove_default_admin_seed.zip
+
+- 서버 기본 관리자 계정 자동 생성 흐름을 비활성화했다.
+- 삭제된 기본 계정이 서버 재시작 후 다시 생성되지 않도록 정리했다.
+- 실제 확인 결과 `admin`, `test`, `test1`은 유지되고 삭제된 기본 계정 로그인은 `401`로 차단됐다.
+
+### mobile_20_remove_login_test_account_hint.zip
+
+- 로그인 화면에 보이던 테스트 계정 안내 문구를 제거했다.
+- 모바일 앱 버전은 `v=86`으로 갱신했다.
+
+### mobile_21_home_bottom_blank_space_fix.zip
+
+- 홈 하단 빈공간 제거를 시도했다.
+- 상단 영역이 크게 밀리는 문제가 있어 최신 기준에서 제외한다.
+
+### mobile_22_home_responsive_layout_fix.zip
+
+- 홈 화면을 반응형 구조로 다시 정리했다.
+- 홈 상단 밀림과 하단 빈공간 문제를 함께 잡는 기준으로 수정했다.
+- 모바일 앱 버전은 `v=88`로 갱신했다.
+
+### mobile_23 ~ mobile_25
+
+- 상태 카드 아이콘 배경, 카드 배경, 상단 사용자명 표시를 수정하려고 시도했다.
+- 버튼 액션과 아이콘 표시가 깨지는 문제가 있어 해당 시도는 폐기한다.
+
+### mobile_26_restore_status_cards_original.zip
+
+- `mobile_22_home_responsive_layout_fix.zip` 기준으로 상태 카드 영역을 정상 동작 상태로 복구했다.
+- 상태 카드, 아이콘, 버튼 액션은 원래 방식으로 복구했다.
+- 홈 반응형 레이아웃 수정은 유지했다.
+- 모바일 앱 버전은 `v=92` 기준이다.
+
+### 콘솔 명령어 기준 보강
+
+- 서버 수정본은 `/root/apps/green_api` 직접 업로드 기준으로 정리했다.
+- 모바일 수정본은 `/root/apps/mobile_app` 직접 업로드 기준으로 정리했다.
+- 모바일 라이브 반영 위치는 `/var/www/mobile_live` 기준이다.
+- VPS에 `node` 명령어가 없으므로 모바일 적용 명령어에서 `node --check app.js`를 제외했다.
+- 콘솔 명령어는 짧게, 필요한 최소 명령어만 제공하는 기준으로 정리했다.
 
 ## 2026-05-19
 
