@@ -70,6 +70,23 @@ ZIP 만들어줘
 - UI 수정은 화면 배치, 여백, 크기, 색상, 버튼 위치, 표시 방식 중심으로 한다.
 - 기능 조건, 저장 조건, 동기화 조건, 계산 조건, 권한 조건은 임의로 바꾸지 않는다.
 
+## 그래프 연결 기준
+
+- P001 프로젝트 규칙 문서는 [[projects/P001/RULES]]를 기준 링크로 사용한다.
+- 저장소 루트의 `RULES.md`와 구분하기 위해 legacy summary나 다른 문서에서는 `[[RULES.md]]` 대신 [[projects/P001/RULES]]처럼 경로가 포함된 링크를 사용한다.
+- 2026-05-19 legacy summary는 [[workforce_app/2026-05-19_pc_server_sync_summary]]로 연결한다.
+- Foam/Obsidian 그래프 연결 확인 시 `projects/P001/RULES.md`와 `workforce_app/2026-05-19_pc_server_sync_summary.md`가 같은 작업 폴더 안에 있어야 한다.
+
+## 관련 문서
+
+- 최신 상태: [[projects/P001/CURRENT]]
+- 다음 작업: [[projects/P001/TASKS]]
+- 작업 기록: [[projects/P001/HISTORY]]
+- 결정 사항: [[projects/P001/DECISIONS]]
+- 테스트 기준: [[projects/P001/TESTS]]
+- 실행 명령어: [[projects/P001/COMMANDS]]
+- legacy summary: [[workforce_app/2026-05-19_pc_server_sync_summary]]
+
 ## 금지
 
 - 기능 조건, 권한 조건, 저장 조건, 동기화 조건, 계산 조건은 임의로 바꾸지 않는다.
