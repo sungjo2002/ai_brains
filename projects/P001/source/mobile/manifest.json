@@ -1,0 +1,31 @@
+{
+  "name": "인력관리 모바일",
+  "short_name": "인력관리",
+  "start_url": "/mobile-live/?source=home&v=92",
+  "scope": "/mobile-live/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0f6bff",
+  "lang": "ko-KR",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "id": "/mobile-live/",
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
+  "orientation": "portrait",
+  "description": "인력관리 모바일 바로가기 앱"
+}

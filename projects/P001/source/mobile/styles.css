@@ -1,0 +1,2514 @@
+:root{
+  --blue:#0f6bff;
+  --blue-2:#eaf3ff;
+  --blue-dark:#0d2a55;
+  --bg:#eef6ff;
+  --page:#f7fbff;
+  --card:#ffffff;
+  --line:#dbe8f7;
+  --line-2:#edf3fb;
+  --text:#14223b;
+  --muted:#7a8798;
+  --green:#13a06f;
+  --green-bg:#effdf6;
+  --red:#ef4444;
+  --red-bg:#fff3f5;
+  --orange:#f59e0b;
+  --orange-bg:#fff7eb;
+  --purple:#6d4ee8;
+  --purple-bg:#f5f0ff;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:linear-gradient(145deg,#f8fbff 0%,#e8f4ff 100%);color:var(--text)}
+body{display:flex;justify-content:center;align-items:flex-start;padding:12px}
+button,input,select,textarea{font-family:inherit}
+button{cursor:pointer}
+.svg-sprite{position:absolute;width:0;height:0;overflow:hidden}
+svg{width:1em;height:1em;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.app-shell{
+  position:relative;
+  width:min(430px,100vw - 24px);
+  height:min(920px,100vh - 24px);
+  min-height:760px;
+  background:var(--page);
+  border-radius:28px;
+  overflow:hidden;
+  box-shadow:0 22px 58px rgba(22,72,124,.17);
+  border:1px solid rgba(147,184,223,.42);
+}
+.app-shell:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 82% -14%,rgba(15,107,255,.16),transparent 34%),linear-gradient(180deg,#fff 0%,#f7fbff 36%,#f6faff 100%);pointer-events:none}
+.app-header{position:relative;z-index:3;height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.94);backdrop-filter:blur(14px)}
+.app-header strong{font-size:17px;letter-spacing:-.02em;color:#0c1d38}
+.icon-button{border:0;background:transparent;width:40px;height:40px;border-radius:13px;color:#1a2a44;font-size:22px;display:grid;place-items:center}
+.icon-button:active{background:#eef6ff}.icon-button.alarm{color:#263b5b}.icon-button svg{width:22px;height:22px}
+.app-content{position:relative;z-index:2;height:calc(100% - 126px);overflow:auto;padding:18px 14px 28px;background:linear-gradient(180deg,rgba(255,255,255,.78),rgba(247,251,255,.92))}
+.app-content::-webkit-scrollbar,.table-scroll::-webkit-scrollbar,.tabs::-webkit-scrollbar{height:4px;width:4px}.app-content::-webkit-scrollbar-thumb,.table-scroll::-webkit-scrollbar-thumb,.tabs::-webkit-scrollbar-thumb{background:#c8d9ee;border-radius:99px}
+.screen{display:none;animation:fade .18s ease}.screen.active{display:block}@keyframes fade{from{opacity:.45;transform:translateY(4px)}to{opacity:1;transform:none}}
+h2{font-size:16px;margin:0 0 10px;letter-spacing:-.03em}.block-title{margin:18px 0 10px}.block-title.no-top{margin-top:0}.top-title{margin-bottom:12px}.section-title-row{display:flex;align-items:center;justify-content:space-between}.muted{font-size:12px;color:var(--muted);font-weight:700}
+.status-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}.status-card{min-height:86px;border-radius:16px;background:var(--card);padding:13px 12px;border:1px solid var(--line);box-shadow:0 8px 20px rgba(35,78,120,.065);display:flex;align-items:flex-start;justify-content:space-between;overflow:hidden}.status-card span{display:block;font-size:13px;font-weight:900;letter-spacing:-.04em}.status-card strong{font-size:30px;line-height:1.08;margin-right:3px;letter-spacing:-.05em;color:#071936}.status-card small{font-size:12px;color:#5f7084;font-weight:700}.status-card i{font-style:normal;align-self:flex-end;opacity:.62;font-size:28px;line-height:1}.status-card.green{background:var(--green-bg);border-color:#bfeedd}.status-card.green span,.status-card.green i{color:var(--green)}.status-card.red{background:var(--red-bg);border-color:#ffd1d9}.status-card.red span,.status-card.red i{color:var(--red)}.status-card.blue{background:#eef6ff;border-color:#c9ddff}.status-card.blue span,.status-card.blue i{color:var(--blue)}.status-card.teal{background:#eefaf8;border-color:#bfe9df}.status-card.teal span,.status-card.teal i{color:#1e9f87}.status-card.orange{background:var(--orange-bg);border-color:#fed9a8}.status-card.orange span,.status-card.orange i{color:#b86500}.status-card.purple{background:var(--purple-bg);border-color:#d8ccff}.status-card.purple span,.status-card.purple i{color:var(--purple)}.status-card.wide{grid-column:span 2}
+.alert-card,.sync-card,.warning-card{width:100%;border-radius:16px;border:1px solid var(--line);background:var(--card);padding:14px;margin-top:14px;display:flex;align-items:center;gap:12px;box-shadow:0 8px 20px rgba(35,78,120,.065)}.alert-card{border-color:#ffd4d8;background:#fff8f8;text-align:left;color:inherit}.alert-card b,.alert-card small{display:block}.alert-card small{color:#5d6878;margin-top:4px}.chevron{margin-left:auto;font-size:26px;color:#263b5b;font-weight:600}.round-icon{width:36px;height:36px;border-radius:14px;display:grid;place-items:center;flex:0 0 auto;font-size:20px}.round-icon svg{width:21px;height:21px}.round-icon.danger{background:#fff0f2;color:#e5233a}.round-icon.blue{background:#eaf3ff;color:var(--blue)}.round-icon.warn{background:#fff1cf;color:#d47a00}.sync-card{background:#f2f8ff;border-color:#cfe3ff}.sync-card p{margin:3px 0 0;color:#4d5e75}.sync-card .pill{margin-left:auto}.pill{font-size:12px;font-weight:900;padding:5px 9px;border-radius:999px;white-space:nowrap}.pill.success{background:#e9fbf2;color:#0b8a5b}.pill.warn{background:#fff4d6;color:#bd6b00}.shortcut-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.shortcut-grid button{height:88px;border:1px solid var(--line);border-radius:16px;background:#fff;font-weight:900;color:#1c2d48;box-shadow:0 8px 18px rgba(35,78,120,.065);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}.shortcut-grid button:active{transform:scale(.985)}.shortcut-icon{width:36px;height:36px;border-radius:13px;display:grid;place-items:center;color:#fff;font-size:21px}.shortcut-icon svg{width:22px;height:22px}.shortcut-icon.blue{background:linear-gradient(135deg,#1e78ff,#0054dd)}.shortcut-icon.green{background:linear-gradient(135deg,#23b77b,#0f8f62)}.shortcut-icon.purple{background:linear-gradient(135deg,#8d5cff,#6d4ee8)}
+.tabs{display:flex;gap:7px;overflow-x:auto;padding-bottom:8px;margin-bottom:3px}.tab{white-space:nowrap;border:1px solid var(--line);background:#fff;color:#334155;border-radius:10px;padding:9px 11px;font-weight:900;box-shadow:0 3px 10px rgba(35,78,120,.04)}.tab.active{background:var(--blue);color:#fff;border-color:var(--blue);box-shadow:0 8px 18px rgba(15,107,255,.22)}
+.filter-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:4px 0 12px}.filter-row label{font-size:12px;color:#546174;font-weight:900}.filter-row select,.filter-row input{width:100%;margin-top:6px;height:40px;border:1px solid var(--line);border-radius:10px;background:#fff;padding:0 9px;color:#17233b;font-size:12px;box-shadow:0 3px 10px rgba(35,78,120,.035)}
+.month-card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 8px 20px rgba(35,78,120,.065)}.month-header{display:flex;align-items:center;justify-content:center;gap:28px;padding:10px;border-bottom:1px solid var(--line-2);background:#fbfdff}.month-header button{border:0;background:#eff6ff;color:var(--blue);border-radius:10px;width:30px;height:30px;font-size:20px;font-weight:900}.table-scroll{overflow-x:auto}.attendance-table{width:650px;border-collapse:separate;border-spacing:0;font-size:13px;background:#fff}.attendance-table th,.attendance-table td{border-right:1px solid #e8f0fa;border-bottom:1px solid #e8f0fa;text-align:center;padding:10px 7px}.attendance-table thead th{background:#fbfdff;color:#35435b;font-weight:900}.attendance-table th:first-child{position:sticky;left:0;background:#fff;z-index:1;min-width:72px;text-align:left;color:#1e2d46}.attendance-table thead th:first-child{background:#fbfdff;text-align:center}.attendance-table td{font-weight:900;color:#159566}.attendance-table td.selected{outline:3px solid var(--blue);outline-offset:-3px;background:#eaf3ff!important}.attendance-table .holiday,.attendance-table .holiday-cell{color:#e11d48;background:#fff1f2}.attendance-table .today{background:var(--blue);color:#fff;border-radius:8px}.hint{font-size:12px;color:var(--muted);margin:10px 12px 12px;font-weight:600}.quick-status{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.quick-status button{height:44px;border:1px solid var(--line);border-radius:12px;background:#fff;font-weight:900;color:#23324b;box-shadow:0 5px 14px rgba(35,78,120,.045);display:flex;align-items:center;justify-content:center;gap:5px;font-size:12px}.quick-status button:active{transform:scale(.98)}.mini-icon{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:900}.mini-icon svg{width:13px;height:13px}.mini-icon.ok{background:#e9fbf2;color:#0b8a5b}.mini-icon.bad{background:#fff1f2;color:#e11d48}.mini-icon.blue{background:#eaf3ff;color:var(--blue)}.mini-icon.orange{background:#fff5df;color:#b86500}.mini-icon.purple{background:#f3edff;color:var(--purple)}.mini-icon.gray{background:#f1f5f9;color:#64748b}
+.form-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:15px;box-shadow:0 8px 20px rgba(35,78,120,.065)}.form-card h2{margin:0 0 12px}.form-card label{display:block;font-size:13px;font-weight:900;color:#26354f;margin:0 0 12px;letter-spacing:-.02em}.form-card em{font-style:normal;color:#ef4444}.form-card input,.form-card select,.form-card textarea{width:100%;margin-top:7px;border:1px solid var(--line);border-radius:12px;background:#fbfdff;padding:0 12px;min-height:44px;font:inherit;color:#17233b;box-shadow:inset 0 1px 0 rgba(255,255,255,.7)}.form-card input:focus,.form-card select:focus,.form-card textarea:focus{outline:2px solid rgba(15,107,255,.2);border-color:#9bc4ff}.form-card textarea{min-height:86px;padding-top:12px;resize:vertical}.choice-row,.status-line{display:flex;align-items:center;gap:10px;margin:10px 0 14px;font-size:13px}.choice-row span,.status-line span:first-child{font-weight:900}.choice-row label{margin:0;border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:#fbfdff}.primary{width:100%;height:50px;border:0;border-radius:14px;background:linear-gradient(135deg,#0f6bff,#0055df);color:#fff;font-weight:900;font-size:16px;box-shadow:0 10px 22px rgba(15,107,255,.25);display:flex;align-items:center;justify-content:center;gap:8px}.primary svg{width:20px;height:20px}.recent-list{margin-top:14px}.list-empty{border:1px dashed #c7d6e8;background:#f8fbff;color:#6a7586;border-radius:14px;padding:14px;text-align:center;font-size:13px}.worker-item,.history-list article{background:#fff;border:1px solid var(--line);border-radius:13px;padding:11px;margin-bottom:8px;display:flex;justify-content:space-between;gap:10px;align-items:center;box-shadow:0 5px 15px rgba(35,78,120,.04)}.worker-item b,.worker-item small{display:block}.worker-item small{color:var(--muted);margin-top:3px}.warning-card{align-items:flex-start;background:#fff8e8;border-color:#fedb8b;margin-bottom:12px}.warning-card small{display:block;color:#7a5100;margin-top:4px}.unit-input{display:flex;align-items:center}.unit-input input{border-radius:12px 0 0 12px}.unit-input span{height:44px;margin-top:7px;display:flex;align-items:center;border:1px solid var(--line);border-left:0;border-radius:0 12px 12px 0;padding:0 12px;background:#f8fbff;color:#617085;font-weight:800}.count-input{display:flex;align-items:center;gap:8px}.count-input button{width:38px;height:38px;border:1px solid var(--line);border-radius:11px;background:#fff;font-size:18px;color:#0f6bff;font-weight:900;box-shadow:0 3px 10px rgba(35,78,120,.04)}.count-input input{width:52px;text-align:center}.count-input small{color:var(--muted)}.form-card label small{display:block;color:var(--muted);margin-top:5px;font-weight:600}.sync-list{display:grid;gap:10px}.sync-list article{display:flex;align-items:center;gap:13px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:15px;box-shadow:0 8px 18px rgba(35,78,120,.065)}.sync-list b,.sync-list small{display:block}.sync-list small{color:#657287}.sync-list .pill{margin-left:auto}.circle-icon{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#eff6ff;color:var(--blue);font-size:22px;flex:0 0 auto}.circle-icon svg{width:23px;height:23px}.sync-button{margin:16px 0}.history-list article span:first-child{color:#5a667a;font-size:12px}.history-list article b{font-size:13px}.history-list article .fail{color:#ef4444}.bottom-nav{position:absolute;z-index:5;left:0;right:0;bottom:0;height:68px;background:rgba(255,255,255,.98);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);box-shadow:0 -8px 22px rgba(22,62,110,.06);padding-bottom:env(safe-area-inset-bottom)}.bottom-nav button{border:0;background:transparent;color:#65748a;font-weight:900;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;letter-spacing:-.04em}.bottom-nav button svg{width:22px;height:22px}.bottom-nav button span{font-size:10px;font-weight:900}.bottom-nav button.active{color:var(--blue)}.bottom-nav button.active svg{filter:drop-shadow(0 5px 10px rgba(15,107,255,.2))}.toast{position:absolute;z-index:10;left:20px;right:20px;bottom:82px;padding:12px 14px;border-radius:14px;background:#17233b;color:#fff;font-size:13px;text-align:center;transform:translateY(20px);opacity:0;pointer-events:none;transition:.2s;box-shadow:0 12px 30px rgba(23,35,59,.22)}.toast.show{opacity:1;transform:translateY(0)}
+@media(max-width:460px){body{padding:0}.app-shell{width:100vw;height:100dvh;min-height:100dvh;border-radius:0;border:0}.status-grid{gap:8px}.quick-status{grid-template-columns:repeat(2,1fr)}.filter-row{grid-template-columns:1fr}.app-content{padding-bottom:28px}}
+
+/* 5차 수정: 홈 화면 공간 정리 + 상태별 근로자 목록 */
+.status-card{min-height:78px;padding:11px 10px;cursor:pointer;transition:border-color .16s, box-shadow .16s, transform .16s}
+.status-card i{font-size:20px;opacity:.58}
+.status-card i svg{width:20px;height:20px}
+.status-card strong{font-size:28px}
+.status-card.active{border-width:2px;box-shadow:0 12px 24px rgba(15,107,255,.18);transform:translateY(-1px)}
+.status-card.teal.active{background:#1e9f87;border-color:#1e9f87}.status-card.teal.active span,.status-card.teal.active strong,.status-card.teal.active small,.status-card.teal.active i{color:#fff}
+.status-card.green.active{background:#2f7cff;border-color:#2f7cff}.status-card.green.active span,.status-card.green.active strong,.status-card.green.active small,.status-card.green.active i{color:#fff}
+.status-card.red.active{background:#ef5e68;border-color:#ef5e68}.status-card.red.active span,.status-card.red.active strong,.status-card.red.active small,.status-card.red.active i{color:#fff}
+.status-card.blue.active{background:#3678ff;border-color:#3678ff}.status-card.blue.active span,.status-card.blue.active strong,.status-card.blue.active small,.status-card.blue.active i{color:#fff}
+.status-card.orange.active{background:#ee9532;border-color:#ee9532}.status-card.orange.active span,.status-card.orange.active strong,.status-card.orange.active small,.status-card.orange.active i{color:#fff}
+.status-card.purple.active{background:#8755df;border-color:#8755df}.status-card.purple.active span,.status-card.purple.active strong,.status-card.purple.active small,.status-card.purple.active i{color:#fff}
+.alert-card.compact{margin-top:12px;padding:12px 14px}
+.alert-card.compact .round-icon{width:30px;height:30px;border-radius:11px;font-size:16px}
+.alert-card.compact .round-icon svg{width:17px;height:17px}
+.compact-title{margin:14px 0 9px}
+.compact-shortcut button{height:76px;gap:6px}
+.shortcut-icon{width:30px;height:30px;border-radius:11px;font-size:17px}
+.shortcut-icon svg{width:18px;height:18px}
+.round-icon{width:32px;height:32px;border-radius:12px;font-size:17px}
+.round-icon svg{width:18px;height:18px}
+.icon-button svg{width:20px;height:20px}
+.bottom-nav button svg{width:19px;height:19px}
+.home-worker-card{margin-top:14px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:13px;box-shadow:0 8px 20px rgba(35,78,120,.065)}
+.home-worker-card h2{margin:0;font-size:15px}
+.home-worker-head,.home-worker-row{display:grid;grid-template-columns:1fr 1.25fr .85fr .92fr;gap:6px;align-items:center}
+.home-worker-head{margin-top:10px;padding:8px 9px;border-radius:11px;background:#f3f8ff;color:#5b6a80;font-size:11px;font-weight:900;text-align:center}
+.home-worker-head span:first-child,.home-worker-row span:first-child{text-align:left}
+.home-worker-list{margin-top:8px;max-height:182px;overflow:auto;padding-right:2px}
+.home-worker-row{min-height:38px;padding:8px 9px;border:1px solid #e7f0fb;border-radius:12px;background:#fff;margin-bottom:7px;font-size:12px;font-weight:800;color:#26364f;text-align:center}
+.home-worker-row b{font-size:13px;color:#101f38;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.home-worker-row span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.home-worker-row .state-pill{justify-self:end;font-size:11px;font-weight:900;border-radius:999px;padding:4px 7px;min-width:44px;text-align:center}
+.state-pill.present{background:#e9fbf2;color:#0b8a5b}.state-pill.absent{background:#fff1f2;color:#e11d48}.state-pill.hospital{background:#eaf3ff;color:#0f6bff}.state-pill.late{background:#fff5df;color:#b86500}.state-pill.unauthorized{background:#f5f0ff;color:#6d4ee8}.state-pill.empty{background:#eef2f7;color:#6b7280}
+.home-worker-empty{padding:24px 10px;text-align:center;color:#7a8798;font-weight:800;border:1px dashed #cbd9ea;border-radius:14px;background:#f8fbff;font-size:13px}
+.bottom-nav button.nav-sync.sync-success svg{color:var(--green)}
+.bottom-nav button.nav-sync.sync-fail svg{color:var(--red)}
+.bottom-nav button.nav-sync.sync-warning svg{color:var(--orange)}
+.bottom-nav button.nav-sync.has-pending{position:relative}
+.bottom-nav button.nav-sync.has-pending::after{content:"";position:absolute;top:10px;right:25px;width:7px;height:7px;border-radius:50%;background:var(--orange);border:2px solid #fff}
+@media(max-width:460px){.home-worker-list{max-height:190px}.status-card{min-height:76px}.home-worker-head,.home-worker-row{grid-template-columns:1fr 1.1fr .75fr .9fr}.home-worker-row{font-size:11px}.home-worker-row b{font-size:12px}}
+
+/* 6차 수정: 홈 하단 기본 여백/테두리 정렬 */
+#homeScreen.active{
+  display:flex;
+  flex-direction:column;
+  min-height:100%;
+}
+#homeScreen .home-worker-card{
+  flex:1 1 auto;
+  min-height:214px;
+  margin-bottom:0;
+  display:flex;
+  flex-direction:column;
+}
+#homeScreen .home-worker-list{
+  flex:1 1 auto;
+  min-height:0;
+  max-height:none;
+  overflow:auto;
+  padding-right:4px;
+}
+#homeScreen .home-worker-row:last-child{
+  margin-bottom:0;
+}
+.app-content{
+  padding-bottom:12px;
+}
+.bottom-nav{
+  height:74px;
+  align-items:stretch;
+  border-top:1px solid #d7e5f5;
+}
+.bottom-nav button{
+  padding-top:6px;
+  padding-bottom:8px;
+}
+.app-shell{
+  background:#f7fbff;
+}
+@media(max-width:460px){
+  .app-content{padding-bottom:12px}
+  #homeScreen .home-worker-card{min-height:220px}
+  .bottom-nav{height:74px}
+}
+
+
+
+
+/* 8차 수정: 홈 전체 고정 + 상태별 근로자 행 목록만 스크롤 + 앱형 스크롤바 숨김 */
+.app-shell.home-mode .app-content{
+  height:calc(100% - 132px);
+  overflow:hidden;
+  padding-bottom:12px;
+}
+.app-shell.home-mode #homeScreen.active{
+  height:100%;
+  min-height:0;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+}
+.app-shell.home-mode #homeScreen .home-worker-card{
+  flex:1 1 auto;
+  min-height:0;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  margin-bottom:0;
+}
+.app-shell.home-mode #homeScreen .home-worker-head{
+  flex:0 0 auto;
+}
+.app-shell.home-mode #homeScreen .home-worker-list{
+  flex:1 1 auto;
+  min-height:0;
+  max-height:none;
+  overflow-y:auto;
+  overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+  padding-right:0;
+}
+.app-shell.home-mode #homeScreen .home-worker-list::-webkit-scrollbar{
+  width:0;
+  height:0;
+  display:none;
+}
+.app-shell.home-mode #homeScreen .home-worker-row:last-child{
+  margin-bottom:0;
+}
+.app-shell.home-mode .app-content::-webkit-scrollbar,
+.app-shell.home-mode #homeScreen::-webkit-scrollbar{
+  width:0;
+  height:0;
+  display:none;
+}
+.app-shell.home-mode .app-content,
+.app-shell.home-mode #homeScreen{
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+}
+.table-scroll,.tabs,.app-content,.home-worker-list{
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+}
+.table-scroll::-webkit-scrollbar,
+.tabs::-webkit-scrollbar,
+.app-content::-webkit-scrollbar,
+.home-worker-list::-webkit-scrollbar{
+  width:0;
+  height:0;
+  display:none;
+}
+@media(max-width:460px){
+  .app-shell.home-mode .app-content{height:calc(100dvh - 132px)}
+  .app-shell.home-mode #homeScreen .home-worker-card{min-height:0}
+}
+
+
+
+/* 9차 수정: 선택한 시안 기준 홈 화면 디자인 리셋 */
+.app-shell.home-mode{
+  background:linear-gradient(180deg,#ffffff 0%,#f6f9fd 28%,#f3f7fc 100%);
+}
+.app-shell.home-mode:before{
+  background:linear-gradient(180deg,#ffffff 0%,#f7fbff 45%,#f4f8fd 100%);
+}
+.app-shell.home-mode .app-header{
+  height:74px;
+  padding:0 18px;
+  background:rgba(255,255,255,.97);
+  border-bottom:1px solid #e4edf7;
+}
+.app-shell.home-mode .app-header strong{
+  font-size:18px;
+  font-weight:900;
+  color:#10213e;
+}
+.app-shell.home-mode .icon-button{
+  width:34px;height:34px;border-radius:12px;
+}
+.app-shell.home-mode .app-content{
+  padding:18px 16px 12px;
+  background:transparent;
+}
+.app-shell.home-mode #homeScreen h2,
+.app-shell.home-mode #homeScreen .block-title{
+  color:#10213e;
+  font-size:16px;
+  font-weight:900;
+}
+.app-shell.home-mode #homeScreen .top-title{
+  margin-bottom:14px;
+}
+.app-shell.home-mode #homeScreen .muted{
+  font-size:13px;
+  color:#73829a;
+  font-weight:800;
+}
+.app-shell.home-mode #homeScreen .status-grid{
+  grid-template-columns:repeat(6, minmax(0,1fr));
+  gap:8px;
+}
+.app-shell.home-mode #homeScreen .status-card,
+.app-shell.home-mode #homeScreen .status-card.wide{
+  grid-column:auto;
+  min-height:112px;
+  padding:12px 8px 10px;
+  border-radius:18px;
+  border:1.5px solid #dbe7f5;
+  background:#ffffff;
+  box-shadow:0 8px 20px rgba(31,64,106,.05);
+  display:flex;
+  flex-direction:column-reverse;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  text-align:center;
+}
+.app-shell.home-mode #homeScreen .status-card > div{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+.app-shell.home-mode #homeScreen .status-card span{
+  font-size:10px;
+  font-weight:900;
+  line-height:1.15;
+  letter-spacing:-.04em;
+  min-height:25px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  text-align:center;
+}
+.app-shell.home-mode #homeScreen .status-card strong{
+  margin-top:3px;
+  font-size:22px;
+  line-height:1;
+  color:#10213e;
+}
+.app-shell.home-mode #homeScreen .status-card small{
+  display:none;
+}
+.app-shell.home-mode #homeScreen .status-card i{
+  align-self:center;
+  opacity:1;
+  font-size:24px;
+}
+.app-shell.home-mode #homeScreen .status-card i svg{
+  width:24px;
+  height:24px;
+}
+.app-shell.home-mode #homeScreen .status-card.green{background:#fff;border-color:#7fb6ff}
+.app-shell.home-mode #homeScreen .status-card.green span,
+.app-shell.home-mode #homeScreen .status-card.green i,
+.app-shell.home-mode #homeScreen .status-card.green strong{color:#2f7cff}
+.app-shell.home-mode #homeScreen .status-card.red{background:#fff;border-color:#f4d9df}
+.app-shell.home-mode #homeScreen .status-card.red span,
+.app-shell.home-mode #homeScreen .status-card.red i,
+.app-shell.home-mode #homeScreen .status-card.red strong{color:#ef5e68}
+.app-shell.home-mode #homeScreen .status-card.blue{background:#fff;border-color:#dce7fb}
+.app-shell.home-mode #homeScreen .status-card.blue span,
+.app-shell.home-mode #homeScreen .status-card.blue i,
+.app-shell.home-mode #homeScreen .status-card.blue strong{color:#3678ff}
+.app-shell.home-mode #homeScreen .status-card.teal{background:#fff;border-color:#bfe9df}
+.app-shell.home-mode #homeScreen .status-card.teal span,
+.app-shell.home-mode #homeScreen .status-card.teal i,
+.app-shell.home-mode #homeScreen .status-card.teal strong{color:#1e9f87}
+.app-shell.home-mode #homeScreen .status-card.orange{background:#fff;border-color:#f5e2ce}
+.app-shell.home-mode #homeScreen .status-card.orange span,
+.app-shell.home-mode #homeScreen .status-card.orange i,
+.app-shell.home-mode #homeScreen .status-card.orange strong{color:#ee9532}
+.app-shell.home-mode #homeScreen .status-card.purple{background:#fff;border-color:#ece0fb}
+.app-shell.home-mode #homeScreen .status-card.purple span,
+.app-shell.home-mode #homeScreen .status-card.purple i,
+.app-shell.home-mode #homeScreen .status-card.purple strong{color:#8755df}
+.app-shell.home-mode #homeScreen .status-card.active{
+  border-width:2px;
+  transform:none;
+  box-shadow:0 12px 24px rgba(32,76,150,.14);
+}
+.app-shell.home-mode #homeScreen .status-card.teal.active{background:#1e9f87;border-color:#1e9f87}
+.app-shell.home-mode #homeScreen .status-card.teal.active span,
+.app-shell.home-mode #homeScreen .status-card.teal.active i,
+.app-shell.home-mode #homeScreen .status-card.teal.active strong{color:#fff}
+.app-shell.home-mode #homeScreen .status-card.green.active{background:#2f7cff;border-color:#2f7cff}
+.app-shell.home-mode #homeScreen .status-card.green.active span,
+.app-shell.home-mode #homeScreen .status-card.green.active i,
+.app-shell.home-mode #homeScreen .status-card.green.active strong{color:#fff}
+.app-shell.home-mode #homeScreen .status-card.red.active{background:#ef5e68;border-color:#ef5e68}
+.app-shell.home-mode #homeScreen .status-card.red.active span,
+.app-shell.home-mode #homeScreen .status-card.red.active i,
+.app-shell.home-mode #homeScreen .status-card.red.active strong{color:#fff}
+.app-shell.home-mode #homeScreen .status-card.blue.active{background:#3678ff;border-color:#3678ff}
+.app-shell.home-mode #homeScreen .status-card.blue.active span,
+.app-shell.home-mode #homeScreen .status-card.blue.active i,
+.app-shell.home-mode #homeScreen .status-card.blue.active strong{color:#fff}
+.app-shell.home-mode #homeScreen .status-card.orange.active{background:#ee9532;border-color:#ee9532}
+.app-shell.home-mode #homeScreen .status-card.orange.active span,
+.app-shell.home-mode #homeScreen .status-card.orange.active i,
+.app-shell.home-mode #homeScreen .status-card.orange.active strong{color:#fff}
+.app-shell.home-mode #homeScreen .status-card.purple.active{background:#8755df;border-color:#8755df}
+.app-shell.home-mode #homeScreen .status-card.purple.active span,
+.app-shell.home-mode #homeScreen .status-card.purple.active i,
+.app-shell.home-mode #homeScreen .status-card.purple.active strong{color:#fff}
+.app-shell.home-mode #homeScreen .alert-card.compact{
+  margin-top:14px;
+  min-height:92px;
+  border-radius:20px;
+  border:1px solid #dfe8f4;
+  background:#ffffff;
+  padding:16px 18px;
+  box-shadow:0 8px 20px rgba(31,64,106,.04);
+}
+.app-shell.home-mode #homeScreen .alert-card.compact .round-icon{
+  width:42px;height:42px;border-radius:50%;background:#fff1f3;color:#eb4c5a;
+}
+.app-shell.home-mode #homeScreen .alert-card.compact b{
+  font-size:15px;
+  color:#10213e;
+}
+.app-shell.home-mode #homeScreen .alert-card.compact small{
+  font-size:13px;
+  margin-top:6px;
+  color:#56667d;
+}
+.app-shell.home-mode #homeScreen .chevron{
+  color:#3d5272;
+  font-size:30px;
+}
+.app-shell.home-mode #homeScreen .compact-title{
+  margin-top:18px;
+  margin-bottom:12px;
+}
+.app-shell.home-mode #homeScreen .shortcut-grid.compact-shortcut{
+  gap:12px;
+}
+.app-shell.home-mode #homeScreen .shortcut-grid.compact-shortcut button{
+  height:82px;
+  border-radius:18px;
+  border:1px solid #dbe7f5;
+  box-shadow:0 8px 18px rgba(31,64,106,.04);
+  gap:10px;
+}
+.app-shell.home-mode #homeScreen .shortcut-grid.compact-shortcut .shortcut-icon{
+  width:34px;height:34px;border-radius:12px;
+}
+.app-shell.home-mode #homeScreen .shortcut-grid.compact-shortcut b{
+  font-size:14px;
+}
+.app-shell.home-mode #homeScreen .home-worker-card{
+  margin-top:18px;
+  border-radius:22px;
+  border:1px solid #dfe8f4;
+  box-shadow:0 10px 24px rgba(31,64,106,.04);
+  padding:18px;
+  background:#ffffff;
+}
+.app-shell.home-mode #homeScreen .home-worker-card .section-title-row{
+  margin-bottom:12px;
+}
+.app-shell.home-mode #homeScreen .home-worker-card h2{
+  font-size:17px;
+}
+.app-shell.home-mode #homeScreen .home-worker-card .muted{
+  font-size:13px;
+  color:#2f7cff;
+  font-weight:900;
+}
+.app-shell.home-mode #homeScreen .home-worker-head{
+  height:48px;
+  border-radius:16px;
+  background:#f2f6fb;
+  padding:0 14px;
+  color:#6e7f96;
+  font-weight:900;
+  font-size:13px;
+}
+.app-shell.home-mode #homeScreen .home-worker-list{
+  margin-top:6px;
+}
+.app-shell.home-mode #homeScreen .home-worker-row{
+  min-height:66px;
+  margin:0;
+  padding:0 14px;
+  border:0;
+  border-bottom:1px solid #edf2f8;
+  border-radius:0;
+  box-shadow:none;
+  background:transparent;
+}
+.app-shell.home-mode #homeScreen .home-worker-row:last-child{
+  border-bottom:0;
+}
+.app-shell.home-mode #homeScreen .home-worker-row b,
+.app-shell.home-mode #homeScreen .home-worker-row span{
+  font-size:14px;
+  color:#172742;
+}
+.app-shell.home-mode #homeScreen .home-worker-row b{
+  font-weight:900;
+}
+.app-shell.home-mode #homeScreen .state-pill{
+  justify-self:end;
+  min-width:64px;
+  height:34px;
+  padding:0 14px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:900;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+.app-shell.home-mode #homeScreen .state-pill.present{background:#ecfbf3;color:#10a35f}
+.app-shell.home-mode #homeScreen .state-pill.absent{background:#fff0f1;color:#ea5e6c}
+.app-shell.home-mode #homeScreen .state-pill.hospital{background:#eff5ff;color:#3678ff}
+.app-shell.home-mode #homeScreen .state-pill.late{background:#fff5e8;color:#ee9532}
+.app-shell.home-mode #homeScreen .state-pill.unauthorized{background:#f4efff;color:#8755df}
+.app-shell.home-mode .bottom-nav{
+  height:76px;
+  border-top:1px solid #dde7f3;
+  box-shadow:0 -8px 20px rgba(31,64,106,.05);
+  background:rgba(255,255,255,.98);
+}
+.app-shell.home-mode .bottom-nav button{
+  padding-top:8px;
+  padding-bottom:10px;
+}
+.app-shell.home-mode .bottom-nav button svg{width:21px;height:21px}
+.app-shell.home-mode .bottom-nav button span{font-size:11px}
+
+@media(max-width:460px){
+  .app-shell.home-mode #homeScreen .status-grid{gap:8px}
+  .app-shell.home-mode #homeScreen .status-card,
+  .app-shell.home-mode #homeScreen .status-card.wide{min-height:98px;padding:10px 6px}
+  .app-shell.home-mode #homeScreen .status-card span{font-size:10px;min-height:23px}
+  .app-shell.home-mode #homeScreen .status-card strong{font-size:22px}
+  .app-shell.home-mode #homeScreen .alert-card.compact{min-height:84px;padding:14px 15px}
+  .app-shell.home-mode #homeScreen .home-worker-card{padding:14px}
+  .app-shell.home-mode #homeScreen .home-worker-head,
+  .app-shell.home-mode #homeScreen .home-worker-row{grid-template-columns:1fr 1.1fr .85fr .9fr}
+  .app-shell.home-mode #homeScreen .home-worker-row{padding:0 10px;min-height:60px}
+  .app-shell.home-mode #homeScreen .home-worker-row b,
+  .app-shell.home-mode #homeScreen .home-worker-row span{font-size:12px}
+  .app-shell.home-mode #homeScreen .state-pill{min-width:52px;height:30px;font-size:12px;padding:0 10px}
+}
+
+
+
+/* 10차 수정: 전체 아이콘/글자 크기 한 단계 축소 */
+.app-header strong{font-size:16px}
+.icon-button svg{width:18px;height:18px}
+h2,.block-title{font-size:15px}
+.muted{font-size:11px}
+
+/* 홈 화면 축소 정리 */
+.app-shell.home-mode .app-header{
+  height:70px;
+  padding:0 16px;
+}
+.app-shell.home-mode .app-header strong{font-size:17px}
+.app-shell.home-mode .icon-button{width:32px;height:32px}
+.app-shell.home-mode .icon-button svg{width:17px;height:17px}
+.app-shell.home-mode .app-content{padding:16px 14px 10px}
+.app-shell.home-mode #homeScreen h2,
+.app-shell.home-mode #homeScreen .block-title{font-size:15px}
+.app-shell.home-mode #homeScreen .muted{font-size:12px}
+.app-shell.home-mode #homeScreen .top-title{margin-bottom:12px}
+
+.app-shell.home-mode #homeScreen .status-grid{gap:8px}
+.app-shell.home-mode #homeScreen .status-card,
+.app-shell.home-mode #homeScreen .status-card.wide{
+  min-height:98px;
+  padding:10px 6px 9px;
+  border-radius:16px;
+}
+.app-shell.home-mode #homeScreen .status-card span{
+  font-size:10px;
+  min-height:22px;
+}
+.app-shell.home-mode #homeScreen .status-card strong{
+  font-size:20px;
+}
+.app-shell.home-mode #homeScreen .status-card i,
+.app-shell.home-mode #homeScreen .status-card i svg{
+  width:20px;
+  height:20px;
+  font-size:20px;
+}
+
+.app-shell.home-mode #homeScreen .alert-card.compact{
+  margin-top:12px;
+  min-height:82px;
+  padding:14px 16px;
+  border-radius:18px;
+}
+.app-shell.home-mode #homeScreen .alert-card.compact .round-icon{
+  width:36px;height:36px;
+}
+.app-shell.home-mode #homeScreen .alert-card.compact .round-icon svg{
+  width:16px;height:16px;
+}
+.app-shell.home-mode #homeScreen .alert-card.compact b{font-size:14px}
+.app-shell.home-mode #homeScreen .alert-card.compact small{font-size:12px}
+.app-shell.home-mode #homeScreen .chevron{font-size:24px}
+
+.app-shell.home-mode #homeScreen .compact-title{
+  margin-top:16px;
+  margin-bottom:10px;
+}
+.app-shell.home-mode #homeScreen .shortcut-grid.compact-shortcut{gap:10px}
+.app-shell.home-mode #homeScreen .shortcut-grid.compact-shortcut button{
+  height:74px;
+  border-radius:16px;
+  gap:8px;
+}
+.app-shell.home-mode #homeScreen .shortcut-grid.compact-shortcut .shortcut-icon{
+  width:30px;height:30px;border-radius:10px;
+}
+.app-shell.home-mode #homeScreen .shortcut-grid.compact-shortcut .shortcut-icon svg{
+  width:18px;height:18px;
+}
+.app-shell.home-mode #homeScreen .shortcut-grid.compact-shortcut b{
+  font-size:13px;
+}
+
+.app-shell.home-mode #homeScreen .home-worker-card{
+  margin-top:16px;
+  border-radius:20px;
+  padding:15px;
+}
+.app-shell.home-mode #homeScreen .home-worker-card h2{font-size:16px}
+.app-shell.home-mode #homeScreen .home-worker-card .muted{font-size:12px}
+.app-shell.home-mode #homeScreen .home-worker-head{
+  height:42px;
+  font-size:12px;
+  padding:0 12px;
+}
+.app-shell.home-mode #homeScreen .home-worker-list{margin-top:4px}
+.app-shell.home-mode #homeScreen .home-worker-row{
+  min-height:58px;
+  padding:0 12px;
+}
+.app-shell.home-mode #homeScreen .home-worker-row b,
+.app-shell.home-mode #homeScreen .home-worker-row span{
+  font-size:13px;
+}
+.app-shell.home-mode #homeScreen .state-pill{
+  min-width:58px;
+  height:30px;
+  padding:0 12px;
+  font-size:12px;
+}
+
+/* 하단 메뉴 축소 */
+.bottom-nav button svg{width:18px;height:18px}
+.bottom-nav button span{font-size:9px}
+.app-shell.home-mode .bottom-nav{
+  height:72px;
+}
+.app-shell.home-mode .bottom-nav button{
+  padding-top:6px;
+  padding-bottom:8px;
+  gap:3px;
+}
+.app-shell.home-mode .bottom-nav button svg{width:18px;height:18px}
+.app-shell.home-mode .bottom-nav button span{font-size:10px}
+
+/* 다른 페이지도 약간 축소 */
+.tab{font-size:12px}
+.filter-row label,
+.form-card label,
+.choice-row,
+.status-line,
+.hint{font-size:12px}
+.form-card input,.form-card select,.form-card textarea{font-size:13px;min-height:42px}
+.primary{height:46px;font-size:15px}
+.worker-item b,.sync-list b{font-size:14px}
+.worker-item small,.sync-list small{font-size:11px}
+
+@media(max-width:460px){
+  .app-shell.home-mode .app-content{padding:14px 12px 10px}
+  .app-shell.home-mode #homeScreen .status-card,
+  .app-shell.home-mode #homeScreen .status-card.wide{min-height:92px;padding:9px 5px 8px}
+  .app-shell.home-mode #homeScreen .status-card span{font-size:9px;min-height:20px}
+  .app-shell.home-mode #homeScreen .status-card strong{font-size:18px}
+  .app-shell.home-mode #homeScreen .status-card i,
+  .app-shell.home-mode #homeScreen .status-card i svg{width:18px;height:18px;font-size:18px}
+  .app-shell.home-mode #homeScreen .alert-card.compact{padding:12px 14px;min-height:78px}
+  .app-shell.home-mode #homeScreen .alert-card.compact b{font-size:13px}
+  .app-shell.home-mode #homeScreen .alert-card.compact small{font-size:11px}
+  .app-shell.home-mode #homeScreen .shortcut-grid.compact-shortcut button{height:70px}
+  .app-shell.home-mode #homeScreen .shortcut-grid.compact-shortcut b{font-size:12px}
+  .app-shell.home-mode #homeScreen .home-worker-card{padding:13px}
+  .app-shell.home-mode #homeScreen .home-worker-head{height:40px;font-size:11px}
+  .app-shell.home-mode #homeScreen .home-worker-row{min-height:54px;padding:0 10px}
+  .app-shell.home-mode #homeScreen .home-worker-row b,
+  .app-shell.home-mode #homeScreen .home-worker-row span{font-size:12px}
+  .app-shell.home-mode #homeScreen .state-pill{min-width:50px;height:28px;font-size:11px;padding:0 10px}
+  .app-shell.home-mode .bottom-nav button span{font-size:9px}
+}
+
+
+/* 11차 수정: PC 프로그램 아이콘 원본 적용 + 근태관리 이름 칸 축소 */
+.svg-sprite symbol path,
+.svg-sprite symbol circle,
+.svg-sprite symbol rect,
+.svg-sprite symbol line,
+.svg-sprite symbol polyline{
+  vector-effect: non-scaling-stroke;
+}
+/* PC 프로그램 아이콘 선 두께 기준에 맞춰 모바일 아이콘을 또렷하게 표시 */
+.bottom-nav svg,
+.shortcut-icon svg,
+.status-card i svg,
+.mini-icon svg,
+.round-icon svg,
+.circle-icon svg{
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+/* 근태관리 표: 이름 칸은 줄이고 날짜 칸을 더 보이게 */
+.attendance-table{
+  width:590px;
+  table-layout:fixed;
+}
+.attendance-table th:first-child{
+  min-width:52px!important;
+  width:52px!important;
+  max-width:52px!important;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  padding-left:6px;
+  padding-right:6px;
+}
+.attendance-table th:not(:first-child),
+.attendance-table td{
+  width:52px;
+  padding-left:5px;
+  padding-right:5px;
+}
+.attendance-table thead th:first-child{
+  text-align:center;
+}
+/* 상태 빠른 등록 버튼 아이콘도 PC 상태 아이콘과 같은 크기감 */
+.quick-status button{
+  gap:6px;
+}
+.mini-icon{
+  background:transparent!important;
+}
+.mini-icon svg{
+  width:16px!important;
+  height:16px!important;
+}
+/* PC 프로그램의 상태 아이콘은 색이 icon 자체에 들어가는 형태라 배경 원형을 빼서 동일하게 보이게 함 */
+.mini-icon.ok{color:#0b8a5b}
+.mini-icon.bad{color:#e11d48}
+.mini-icon.blue{color:#2563eb}
+.mini-icon.orange{color:#d97706}
+.mini-icon.purple{color:#7c3aed}
+.mini-icon.gray{color:#64748b}
+/* 메뉴/바로가기 아이콘은 PC 원본 선 아이콘 느낌을 유지 */
+.bottom-nav button svg{
+  stroke-width:2.5;
+}
+.shortcut-icon svg{
+  stroke-width:2.5;
+}
+
+
+/* 12차 수정: 근태관리 터치 동작을 PC 방식처럼 적용 */
+.attendance-table td.interactive{cursor:pointer;position:relative}
+.attendance-table td .cell-icon{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:999px}
+.attendance-table td .cell-icon svg{width:17px;height:17px}
+.attendance-table td .cell-empty{width:16px;height:16px}
+.attendance-table td.state-empty{color:transparent}
+.attendance-table td.state-present .cell-icon{color:#159566;background:#e9fbf2}
+.attendance-table td.state-absent .cell-icon{color:#e11d48;background:#fff1f2}
+.attendance-table td.state-hospital .cell-icon{color:#2563eb;background:#eaf3ff}
+.attendance-table td.state-late .cell-icon{color:#b86500;background:#fff5df}
+.attendance-table td.state-early .cell-icon{color:#7c3aed;background:#f3edff}
+.attendance-table td.state-off .cell-icon{color:#64748b;background:#f1f5f9}
+.attendance-table td.state-unauthorized .cell-icon{color:#e11d48;background:#fff1f2}
+.attendance-table td.selected{outline:3px solid var(--blue);outline-offset:-3px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.95)}
+.quick-status button.active{border-color:#8bb9ff;background:#eff6ff;color:#0f6bff;box-shadow:0 8px 18px rgba(15,107,255,.12)}
+.quick-status button.active .mini-icon{transform:scale(1.05)}
+
+
+/* 13차 수정: 근태관리 하단 빈공간 정리 + 이름칸 확대 + 날짜칸 정사각형 */
+#attendanceScreen.active{
+  display:flex;
+  flex-direction:column;
+  min-height:100%;
+}
+#attendanceScreen .block-title{
+  margin-top:auto;
+}
+#attendanceScreen .quick-status{
+  margin-bottom:0;
+}
+.attendance-table{
+  width:690px;
+  table-layout:fixed;
+}
+.attendance-table thead th:first-child,
+.attendance-table tbody th:first-child{
+  width:92px;
+  min-width:92px;
+}
+.attendance-table tbody th:first-child{
+  padding:0 10px;
+  height:60px;
+  vertical-align:middle;
+}
+.attendance-table thead th:not(:first-child){
+  width:60px;
+  min-width:60px;
+  height:60px;
+  padding:6px 4px;
+  vertical-align:middle;
+}
+.attendance-table td{
+  width:60px;
+  min-width:60px;
+  height:60px;
+  padding:0;
+  vertical-align:middle;
+}
+.attendance-table td .cell-icon{
+  width:22px;
+  height:22px;
+}
+.attendance-table td .cell-icon svg{
+  width:15px;
+  height:15px;
+}
+@media(max-width:460px){
+  .attendance-table{
+    width:692px;
+  }
+}
+
+
+/* 14차 수정: 근태표 칸 높이 대폭 축소 */
+.attendance-table{
+  width:632px;
+  table-layout:fixed;
+}
+.attendance-table thead th:first-child,
+.attendance-table tbody th:first-child{
+  width:86px;
+  min-width:86px;
+}
+.attendance-table thead th:first-child{
+  height:52px;
+  padding:4px 6px;
+}
+.attendance-table tbody th:first-child{
+  height:44px;
+  padding:0 8px;
+  line-height:1.1;
+  vertical-align:middle;
+}
+.attendance-table thead th:not(:first-child){
+  width:52px;
+  min-width:52px;
+  height:52px;
+  padding:4px 2px;
+  line-height:1.05;
+  vertical-align:middle;
+}
+.attendance-table td{
+  width:52px;
+  min-width:52px;
+  height:44px;
+  padding:0;
+  vertical-align:middle;
+}
+.attendance-table td .cell-icon{
+  width:18px;
+  height:18px;
+}
+.attendance-table td .cell-icon svg{
+  width:12px;
+  height:12px;
+}
+.attendance-table td.selected{
+  outline-width:2px;
+  outline-offset:-2px;
+}
+.attendance-table th,
+.attendance-table td{
+  font-size:12px;
+}
+.attendance-table thead th .today{
+  border-radius:6px;
+}
+@media(max-width:460px){
+  .attendance-table{
+    width:606px;
+  }
+  .attendance-table thead th:first-child,
+  .attendance-table tbody th:first-child{
+    width:82px;
+    min-width:82px;
+  }
+  .attendance-table thead th:first-child{
+    height:50px;
+  }
+  .attendance-table tbody th:first-child{
+    height:42px;
+    padding:0 7px;
+    font-size:11px;
+  }
+  .attendance-table thead th:not(:first-child){
+    width:50px;
+    min-width:50px;
+    height:50px;
+    font-size:11px;
+  }
+  .attendance-table td{
+    width:50px;
+    min-width:50px;
+    height:42px;
+  }
+  .attendance-table td .cell-icon{
+    width:17px;
+    height:17px;
+  }
+  .attendance-table td .cell-icon svg{
+    width:11px;
+    height:11px;
+  }
+}
+
+
+/* 15차 수정: PC 근태표 기준 모바일 반응형 재계산 */
+.app-shell.attendance-mode .app-content{
+  overflow:hidden;
+  padding:14px 12px 8px;
+}
+.app-shell.attendance-mode #attendanceScreen.active{
+  display:flex;
+  flex-direction:column;
+  height:100%;
+  min-height:0;
+}
+.app-shell.attendance-mode #attendanceScreen .tabs{
+  flex:0 0 auto;
+  padding-bottom:6px;
+  margin-bottom:2px;
+}
+.app-shell.attendance-mode #attendanceScreen .tab{
+  padding:7px 10px;
+  font-size:11px;
+  border-radius:9px;
+}
+.app-shell.attendance-mode #attendanceScreen .filter-row{
+  flex:0 0 auto;
+  gap:6px;
+  margin:2px 0 10px;
+}
+.app-shell.attendance-mode #attendanceScreen .filter-row label{
+  font-size:11px;
+}
+.app-shell.attendance-mode #attendanceScreen .filter-row select,
+.app-shell.attendance-mode #attendanceScreen .filter-row input{
+  height:34px;
+  margin-top:4px;
+  font-size:11px;
+  border-radius:9px;
+  padding:0 8px;
+}
+.app-shell.attendance-mode #attendanceScreen .month-card{
+  flex:1 1 auto;
+  min-height:0;
+  display:flex;
+  flex-direction:column;
+  border-radius:14px;
+  overflow:hidden;
+}
+.app-shell.attendance-mode #attendanceScreen .month-header{
+  flex:0 0 auto;
+  min-height:36px;
+  padding:6px 8px;
+  gap:22px;
+}
+.app-shell.attendance-mode #attendanceScreen .month-header strong{
+  font-size:14px;
+}
+.app-shell.attendance-mode #attendanceScreen .month-header button{
+  width:26px;
+  height:26px;
+  border-radius:8px;
+  font-size:18px;
+}
+.app-shell.attendance-mode #attendanceScreen .table-scroll{
+  flex:1 1 auto;
+  min-height:0;
+  overflow:auto;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+}
+.app-shell.attendance-mode #attendanceScreen .table-scroll::-webkit-scrollbar{
+  width:0;
+  height:0;
+  display:none;
+}
+.app-shell.attendance-mode #attendanceScreen .attendance-table{
+  width:auto;
+  min-width:1202px;
+  table-layout:fixed;
+  border-collapse:separate;
+  border-spacing:0;
+  font-size:11px;
+}
+.app-shell.attendance-mode #attendanceScreen .attendance-table th,
+.app-shell.attendance-mode #attendanceScreen .attendance-table td{
+  padding:0;
+  border-right:1px solid #dce8f5;
+  border-bottom:1px solid #dce8f5;
+}
+.app-shell.attendance-mode #attendanceScreen .attendance-table thead th:first-child,
+.app-shell.attendance-mode #attendanceScreen .attendance-table tbody th:first-child{
+  position:sticky;
+  left:0;
+  width:112px;
+  min-width:112px;
+  max-width:112px;
+  z-index:4;
+  background:#fbfdff;
+  color:#10213e;
+  text-align:left;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.app-shell.attendance-mode #attendanceScreen .attendance-table thead th:first-child{
+  height:34px;
+  text-align:center;
+  z-index:6;
+  background:#f7fbff;
+}
+.app-shell.attendance-mode #attendanceScreen .attendance-table tbody th:first-child{
+  height:30px;
+  padding:0 7px;
+  font-size:10.5px;
+  font-weight:900;
+  line-height:30px;
+}
+.app-shell.attendance-mode #attendanceScreen .attendance-table thead th:not(:first-child){
+  width:35px;
+  min-width:35px;
+  max-width:35px;
+  height:34px;
+  font-size:10.5px;
+  line-height:1.05;
+  text-align:center;
+  vertical-align:middle;
+  background:#fbfdff;
+}
+.app-shell.attendance-mode #attendanceScreen .attendance-table thead th small{
+  font-size:9px;
+  line-height:1;
+}
+.app-shell.attendance-mode #attendanceScreen .attendance-table td{
+  width:35px;
+  min-width:35px;
+  max-width:35px;
+  height:30px;
+  text-align:center;
+  vertical-align:middle;
+}
+.app-shell.attendance-mode #attendanceScreen .attendance-table .holiday,
+.app-shell.attendance-mode #attendanceScreen .attendance-table .holiday-cell{
+  background:#ffe7eb!important;
+}
+.app-shell.attendance-mode #attendanceScreen .attendance-table .today{
+  background:#fbfdff;
+  color:#0f6bff;
+  border-radius:0;
+}
+.app-shell.attendance-mode #attendanceScreen .attendance-table td .cell-icon{
+  width:15px;
+  height:15px;
+  border-radius:50%;
+}
+.app-shell.attendance-mode #attendanceScreen .attendance-table td .cell-icon svg{
+  width:10px;
+  height:10px;
+}
+.app-shell.attendance-mode #attendanceScreen .attendance-table td .cell-empty{
+  width:0;
+  height:0;
+}
+.app-shell.attendance-mode #attendanceScreen .attendance-table td.selected{
+  outline:2px solid var(--blue);
+  outline-offset:-2px;
+  background:#eaf3ff!important;
+}
+.app-shell.attendance-mode #attendanceScreen .hint{
+  flex:0 0 auto;
+  margin:7px 10px 8px;
+  font-size:10.5px;
+  line-height:1.35;
+}
+.app-shell.attendance-mode #attendanceScreen .block-title{
+  flex:0 0 auto;
+  margin:9px 0 7px;
+  font-size:14px;
+}
+.app-shell.attendance-mode #attendanceScreen .quick-status{
+  flex:0 0 auto;
+  grid-template-columns:repeat(4,1fr);
+  gap:6px;
+  margin:0;
+}
+.app-shell.attendance-mode #attendanceScreen .quick-status button{
+  height:36px;
+  border-radius:10px;
+  gap:4px;
+  font-size:11px;
+}
+.app-shell.attendance-mode #attendanceScreen .quick-status .mini-icon{
+  width:16px;
+  height:16px;
+}
+.app-shell.attendance-mode #attendanceScreen .quick-status .mini-icon svg{
+  width:10px;
+  height:10px;
+}
+
+@media(max-width:460px){
+  .app-shell.attendance-mode .app-content{
+    height:calc(100dvh - 132px);
+    padding:12px 10px 8px;
+  }
+  .app-shell.attendance-mode #attendanceScreen .attendance-table{
+    min-width:1174px;
+  }
+  .app-shell.attendance-mode #attendanceScreen .attendance-table thead th:first-child,
+  .app-shell.attendance-mode #attendanceScreen .attendance-table tbody th:first-child{
+    width:106px;
+    min-width:106px;
+    max-width:106px;
+  }
+  .app-shell.attendance-mode #attendanceScreen .attendance-table thead th:not(:first-child),
+  .app-shell.attendance-mode #attendanceScreen .attendance-table td{
+    width:34px;
+    min-width:34px;
+    max-width:34px;
+  }
+}
+
+
+/* 16차 수정: 근로자등록 간단등록 기준 정리 */
+.worker-register-card label{
+  margin-bottom:10px;
+}
+.worker-register-card input,
+.worker-register-card select,
+.worker-register-card textarea{
+  min-height:40px;
+  font-size:13px;
+}
+.worker-register-card textarea{
+  min-height:58px;
+}
+.worker-register-card h2{
+  margin-bottom:10px;
+}
+.worker-register-card .gender-row{
+  margin:8px 0 14px;
+  gap:8px;
+}
+.worker-register-card .gender-row span{
+  min-width:44px;
+}
+.worker-register-card .gender-row label{
+  height:36px;
+  min-width:74px;
+  padding:0 12px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  border-radius:10px;
+}
+.worker-register-card .gender-row input{
+  width:14px;
+  height:14px;
+  min-height:14px;
+  margin:0;
+}
+.worker-register-card .primary{
+  height:46px;
+}
+#workerScreen .status-line{
+  display:none;
+}
+
+
+/* 19차 수정: 차량관리 탭 삭제 + 오일 교환 후 운행 거리 자동 표시 */
+#vehicleScreen.active{
+  display:flex;
+  flex-direction:column;
+  min-height:100%;
+}
+#vehicleScreen .warning-card{
+  margin-top:0;
+  margin-bottom:10px;
+}
+#vehicleScreen .form-card{
+  flex:1 1 auto;
+}
+.oil-result{
+  margin:-2px 0 12px;
+  padding:11px 12px;
+  border:1px solid #dbe8f7;
+  border-radius:12px;
+  background:#f8fbff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+.oil-result b{
+  font-size:12px;
+  color:#26354f;
+  white-space:nowrap;
+}
+.oil-result span{
+  font-size:12px;
+  color:#64748b;
+  text-align:right;
+  font-weight:800;
+}
+.oil-result.ok{
+  background:#effdf6;
+  border-color:#bfeedd;
+}
+.oil-result.ok span{color:#0b8a5b}
+.oil-result.warn{
+  background:#fff7eb;
+  border-color:#fed9a8;
+}
+.oil-result.warn span{color:#b86500}
+.oil-result.danger{
+  background:#fff3f5;
+  border-color:#ffd1d9;
+}
+.oil-result.danger span{color:#e11d48}
+@media(max-width:460px){
+  .oil-result{padding:10px 11px;margin-bottom:10px}
+  .oil-result b,.oil-result span{font-size:11px}
+}
+
+
+/* 21차 수정: 차량관리 화면 한 화면 표시용 compact 레이아웃 */
+#vehicleScreen.active{
+  min-height:100%;
+  display:block;
+  overflow:visible;
+}
+#vehicleScreen .warning-card{
+  margin:0 0 12px;
+  padding:10px 12px;
+  border-radius:14px;
+  gap:10px;
+  min-height:auto;
+}
+#vehicleScreen .warning-card .round-icon{
+  width:30px;
+  height:30px;
+  border-radius:10px;
+}
+#vehicleScreen .warning-card .round-icon svg{
+  width:16px;
+  height:16px;
+}
+#vehicleScreen .warning-card b{
+  font-size:13px;
+  line-height:1.25;
+}
+#vehicleScreen .warning-card small{
+  font-size:11px;
+  margin-top:3px;
+}
+#vehicleScreen .form-card{
+  padding:12px;
+  border-radius:16px;
+  display:block;
+  overflow:visible;
+}
+#vehicleScreen .form-card label{
+  margin:0 0 10px;
+  font-size:12px;
+  line-height:1.25;
+}
+#vehicleScreen .form-card input,
+#vehicleScreen .form-card select,
+#vehicleScreen .form-card textarea{
+  min-height:38px;
+  height:38px;
+  margin-top:5px;
+  border-radius:10px;
+  padding:0 10px;
+  font-size:13px;
+}
+#vehicleScreen .form-card textarea{
+  min-height:56px;
+  height:56px;
+  padding-top:10px;
+  resize:none;
+}
+#vehicleScreen .unit-input span{
+  height:38px;
+  margin-top:5px;
+  padding:0 10px;
+  border-radius:0 10px 10px 0;
+  font-size:12px;
+}
+#vehicleScreen .unit-input input{
+  border-radius:10px 0 0 10px;
+}
+#vehicleScreen .oil-result{
+  min-height:44px;
+  margin:0 0 10px;
+  padding:10px 12px;
+  border-radius:11px;
+  gap:10px;
+}
+#vehicleScreen .oil-result b{
+  font-size:12px;
+  line-height:1.2;
+}
+#vehicleScreen .oil-result span{
+  font-size:11px;
+  line-height:1.25;
+}
+#vehicleScreen .count-input{
+  gap:6px;
+  margin-top:5px;
+}
+#vehicleScreen .count-input button{
+  width:34px;
+  height:34px;
+  border-radius:9px;
+  font-size:16px;
+}
+#vehicleScreen .count-input input{
+  width:46px;
+  height:34px;
+  min-height:34px;
+  margin-top:0;
+  padding:0;
+}
+#vehicleScreen .count-input span,
+#vehicleScreen .count-input small{
+  font-size:11px;
+}
+#vehicleScreen .form-card label small{
+  margin-top:3px;
+  font-size:11px;
+  line-height:1.2;
+}
+#vehicleScreen .primary{
+  height:46px;
+  min-height:46px;
+  margin-top:8px;
+  border-radius:13px;
+  font-size:15px;
+}
+
+@media(max-width:460px){
+  #vehicleScreen .warning-card{padding:9px 11px;gap:9px}
+  #vehicleScreen .warning-card b{font-size:12.5px}
+  #vehicleScreen .form-card{padding:11px}
+  #vehicleScreen .form-card label{font-size:11.5px;margin-bottom:9px}
+  #vehicleScreen .form-card input,
+  #vehicleScreen .form-card select,
+  #vehicleScreen .form-card textarea{min-height:36px;height:36px;font-size:12px;margin-top:4px}
+  #vehicleScreen .form-card textarea{min-height:52px;height:52px;padding-top:9px}
+  #vehicleScreen .unit-input span{height:36px;margin-top:4px;font-size:11px}
+  #vehicleScreen .oil-result{min-height:42px;padding:9px 10px}
+  #vehicleScreen .oil-result b{font-size:11.5px}
+  #vehicleScreen .oil-result span{font-size:10.5px}
+  #vehicleScreen .count-input button{width:32px;height:32px}
+  #vehicleScreen .count-input input{width:44px;height:32px;min-height:32px}
+  #vehicleScreen .primary{height:44px;min-height:44px;font-size:14px}
+}
+
+/* 23차 수정: 근태관리 상단 탭 실제 사용 + 필수 기능 연결 */
+.app-shell.attendance-mode #attendanceScreen .attendance-panel{display:none;min-height:0}
+.app-shell.attendance-mode #attendanceScreen .attendance-panel.active{display:flex;flex-direction:column;min-height:0}
+.app-shell.attendance-mode #attendanceScreen #attPanelMonth.active{flex:1 1 auto}
+.app-shell.attendance-mode #attendanceScreen #attPanelToday.active,
+.app-shell.attendance-mode #attendanceScreen #attPanelWorker.active,
+.app-shell.attendance-mode #attendanceScreen #attPanelStatus.active{flex:1 1 auto;overflow:hidden}
+.app-shell.attendance-mode #attendanceScreen .today-card,
+.app-shell.attendance-mode #attendanceScreen .worker-attendance-card,
+.app-shell.attendance-mode #attendanceScreen .status-attendance-card{height:100%;min-height:0;display:flex;flex-direction:column}
+.app-shell.attendance-mode #attendanceScreen .month-header.compact{justify-content:space-between;gap:8px}
+.app-shell.attendance-mode #attendanceScreen .attendance-list{flex:1 1 auto;min-height:0;overflow:auto;padding:8px;scrollbar-width:none;-ms-overflow-style:none}
+.app-shell.attendance-mode #attendanceScreen .attendance-list::-webkit-scrollbar{width:0;height:0;display:none}
+.app-shell.attendance-mode #attendanceScreen .attendance-list-row{width:100%;min-height:38px;border:1px solid #e5eef9;border-radius:11px;background:#fff;margin-bottom:6px;padding:6px 8px;display:grid;grid-template-columns:24px 1.05fr .8fr .7fr auto;align-items:center;gap:6px;text-align:left;color:#1b2b45;font-size:11px;font-weight:800;box-shadow:0 3px 10px rgba(35,78,120,.035)}
+.app-shell.attendance-mode #attendanceScreen .attendance-list-row.readonly{pointer-events:none}
+.app-shell.attendance-mode #attendanceScreen .attendance-list-row b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11.5px;color:#10213e}
+.app-shell.attendance-mode #attendanceScreen .attendance-list-row span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#52647c}
+.app-shell.attendance-mode #attendanceScreen .attendance-list-row .cell-icon{width:18px;height:18px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center}
+.app-shell.attendance-mode #attendanceScreen .attendance-list-row .cell-icon svg{width:12px;height:12px}
+.app-shell.attendance-mode #attendanceScreen .attendance-empty{margin:10px;border:1px dashed #cbd9ea;border-radius:12px;background:#f8fbff;color:#7a8798;text-align:center;font-size:12px;font-weight:800;padding:16px 8px}
+.app-shell.attendance-mode #attendanceScreen .state-pill{border-radius:999px;padding:4px 7px;font-size:10px;font-style:normal;font-weight:900;white-space:nowrap}
+.app-shell.attendance-mode #attendanceScreen .state-pill.present{background:#e9fbf2;color:#0b8a5b}
+.app-shell.attendance-mode #attendanceScreen .state-pill.absent{background:#fff1f2;color:#e11d48}
+.app-shell.attendance-mode #attendanceScreen .state-pill.hospital{background:#eaf3ff;color:#2563eb}
+.app-shell.attendance-mode #attendanceScreen .state-pill.late,.app-shell.attendance-mode #attendanceScreen .state-pill.early{background:#fff5df;color:#b86500}
+.app-shell.attendance-mode #attendanceScreen .state-pill.off{background:#f1f5f9;color:#64748b}
+.app-shell.attendance-mode #attendanceScreen .state-pill.unauthorized_absent,.app-shell.attendance-mode #attendanceScreen .state-pill.unauthorized_leave{background:#fff1f2;color:#e11d48}
+.app-shell.attendance-mode #attendanceScreen .worker-select-row{flex:0 0 auto;padding:8px 10px;border-bottom:1px solid #edf3fb;background:#fbfdff}
+.app-shell.attendance-mode #attendanceScreen .worker-select-row label{display:block;font-size:11px;font-weight:900;color:#546174}
+.app-shell.attendance-mode #attendanceScreen .worker-select-row select{width:100%;height:32px;margin-top:4px;border:1px solid var(--line);border-radius:9px;background:#fff;padding:0 8px;font-size:11px;color:#17233b}
+.app-shell.attendance-mode #attendanceScreen .worker-summary{flex:0 0 auto;padding:8px 10px;border-bottom:1px solid #edf3fb;display:grid;gap:2px;background:#fff}
+.app-shell.attendance-mode #attendanceScreen .worker-summary b{font-size:12px;color:#10213e}
+.app-shell.attendance-mode #attendanceScreen .worker-summary span,.app-shell.attendance-mode #attendanceScreen .worker-summary small{font-size:10.5px;color:#657287;font-weight:800}
+.app-shell.attendance-mode #attendanceScreen .worker-month-scroll{flex:1 1 auto;min-height:0;overflow:auto;scrollbar-width:none;-ms-overflow-style:none}
+.app-shell.attendance-mode #attendanceScreen .worker-month-scroll::-webkit-scrollbar{width:0;height:0;display:none}
+.app-shell.attendance-mode #attendanceScreen .worker-month-table{min-width:1085px}
+.app-shell.attendance-mode #attendanceScreen .worker-month-table thead th:first-child,
+.app-shell.attendance-mode #attendanceScreen .worker-month-table tbody th:first-child{position:static;width:34px;min-width:34px;max-width:34px;text-align:center}
+.app-shell.attendance-mode #attendanceScreen .worker-month-table td{width:34px;min-width:34px;max-width:34px;height:30px}
+.app-shell.attendance-mode #attendanceScreen .status-filter-row{flex:0 0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:8px;border-bottom:1px solid #edf3fb;background:#fbfdff}
+.app-shell.attendance-mode #attendanceScreen .status-filter-row button{height:30px;border:1px solid var(--line);border-radius:9px;background:#fff;color:#334155;font-size:10.5px;font-weight:900}
+.app-shell.attendance-mode #attendanceScreen .status-filter-row button.active{border-color:#8bb9ff;background:#eff6ff;color:#0f6bff}
+.app-shell.attendance-mode #attendanceScreen .tab.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+@media(max-width:460px){
+  .app-shell.attendance-mode #attendanceScreen .attendance-list-row{grid-template-columns:22px 1fr .75fr .68fr auto;gap:5px;padding:5px 7px;min-height:36px}
+  .app-shell.attendance-mode #attendanceScreen .status-filter-row{gap:5px;padding:7px}
+  .app-shell.attendance-mode #attendanceScreen .status-filter-row button{font-size:10px;height:28px}
+}
+
+
+/* 24차 수정: 근태관리 조회 월 검색 가독성 개선 */
+#attendanceScreen .month-search-label{
+  color:#0f6bff;
+}
+#attendanceScreen .month-search-label input{
+  border-color:#b8d4ff;
+  background:#f8fbff;
+  font-weight:800;
+}
+#attendanceScreen .month-search-label input:focus{
+  outline:none;
+  border-color:#0f6bff;
+  box-shadow:0 0 0 3px rgba(15,107,255,.12);
+}
+#attendanceScreen .attendance-filter-guide{
+  margin:-4px 0 10px;
+  padding:8px 10px;
+  border:1px solid #dbe9ff;
+  border-radius:10px;
+  background:#f8fbff;
+  color:#45607f;
+  font-size:11px;
+  font-weight:700;
+  line-height:1.35;
+}
+.app-shell.attendance-mode #attendanceScreen .attendance-filter-guide{
+  margin:-4px 0 8px;
+  padding:7px 9px;
+  font-size:10.5px;
+}
+
+
+/* 25차 수정: 조회 월 기본 달력 제거, 이전달/다음달 바 적용 */
+#attendanceScreen .attendance-month-bar{
+  margin:-2px 0 10px;
+}
+#attendanceScreen .month-bar-label{
+  display:block;
+  margin-bottom:6px;
+  font-size:12px;
+  font-weight:900;
+  color:#0f6bff;
+}
+#attendanceScreen .attendance-month-controls{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  padding:8px;
+  border:1px solid #dbe9ff;
+  border-radius:12px;
+  background:#f8fbff;
+}
+#attendanceScreen .attendance-month-controls button{
+  border:1px solid #cfe0ff;
+  background:#ffffff;
+  color:#0f6bff;
+  border-radius:10px;
+  min-width:72px;
+  height:36px;
+  padding:0 12px;
+  font-size:12px;
+  font-weight:900;
+}
+#attendanceScreen .attendance-month-controls strong{
+  flex:1;
+  text-align:center;
+  font-size:16px;
+  font-weight:900;
+  color:#1f2f49;
+  letter-spacing:-0.02em;
+}
+.app-shell.attendance-mode #attendanceScreen .attendance-month-bar{
+  margin:0 0 8px;
+}
+.app-shell.attendance-mode #attendanceScreen .month-bar-label{
+  margin-bottom:4px;
+  font-size:11px;
+}
+.app-shell.attendance-mode #attendanceScreen .attendance-month-controls{
+  padding:6px;
+  gap:6px;
+}
+.app-shell.attendance-mode #attendanceScreen .attendance-month-controls button{
+  min-width:64px;
+  height:32px;
+  padding:0 10px;
+  font-size:11px;
+}
+.app-shell.attendance-mode #attendanceScreen .attendance-month-controls strong{
+  font-size:14px;
+}
+
+
+/* 27차 수정: 근태관리 수정 잠금 + 팝업 표시 */
+#attendanceScreen .attendance-lock-notice{
+  margin:-2px 0 8px;
+  padding:8px 10px;
+  border:1px solid #ffd1d9;
+  border-radius:10px;
+  background:#fff3f5;
+  color:#e11d48;
+  font-size:11px;
+  font-weight:900;
+  text-align:center;
+}
+#attendanceScreen.locked-month .attendance-table td.interactive,
+#attendanceScreen.locked-month .attendance-list-row:not(.readonly){
+  cursor:not-allowed;
+}
+#attendanceScreen.locked-month #quickStatus button.locked{
+  opacity:.55;
+}
+.modal-backdrop{
+  position:absolute;
+  z-index:30;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  background:rgba(15,23,42,.36);
+  backdrop-filter:blur(4px);
+}
+.modal-backdrop[hidden]{display:none}
+.modal-card{
+  width:100%;
+  max-width:310px;
+  border-radius:20px;
+  background:#fff;
+  border:1px solid #dbe8f7;
+  box-shadow:0 24px 60px rgba(15,23,42,.24);
+  padding:22px 18px 16px;
+  text-align:center;
+}
+.modal-card strong{
+  display:block;
+  color:#10213e;
+  font-size:18px;
+  font-weight:900;
+  margin-bottom:12px;
+}
+.modal-card p{
+  margin:0 0 18px;
+  color:#334155;
+  font-size:14px;
+  font-weight:800;
+  line-height:1.5;
+}
+.modal-card button{
+  width:100%;
+  height:44px;
+  border:0;
+  border-radius:13px;
+  background:#0f6bff;
+  color:#fff;
+  font-size:15px;
+  font-weight:900;
+}
+
+
+/* 30차 수정: 로그인 화면 + 최고/일반 관리자 권한 */
+.app-shell.logged-out .app-header,
+.app-shell.logged-out .user-strip,
+.app-shell.logged-out .app-content,
+.app-shell.logged-out .bottom-nav,
+.app-shell.logged-out .toast{
+  display:none;
+}
+.login-screen{
+  position:absolute;
+  z-index:40;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  background:linear-gradient(180deg,#ffffff 0%,#f1f7ff 100%);
+}
+.app-shell.logged-in .login-screen{display:none}
+.login-card{
+  width:100%;
+  max-width:340px;
+  border:1px solid #dbe8f7;
+  border-radius:24px;
+  background:#fff;
+  padding:26px 20px 20px;
+  box-shadow:0 18px 45px rgba(22,72,124,.12);
+}
+.login-logo{
+  width:58px;
+  height:58px;
+  margin:0 auto 14px;
+  border-radius:20px;
+  display:grid;
+  place-items:center;
+  background:#eaf3ff;
+  color:#0f6bff;
+}
+.login-logo svg{width:30px;height:30px}
+.login-card h1{
+  margin:0;
+  text-align:center;
+  font-size:22px;
+  font-weight:900;
+  color:#10213e;
+  letter-spacing:-.04em;
+}
+.login-card p{
+  margin:8px 0 20px;
+  text-align:center;
+  color:#66758b;
+  font-size:13px;
+  font-weight:700;
+}
+.login-card label{
+  display:block;
+  margin-bottom:12px;
+  color:#26354f;
+  font-size:13px;
+  font-weight:900;
+}
+.login-card input{
+  width:100%;
+  height:44px;
+  margin-top:7px;
+  border:1px solid #dbe8f7;
+  border-radius:13px;
+  background:#fbfdff;
+  padding:0 13px;
+  font-size:14px;
+  color:#17233b;
+}
+.login-card input:focus{
+  outline:2px solid rgba(15,107,255,.18);
+  border-color:#8bb9ff;
+}
+.login-error{
+  margin-top:12px;
+  padding:10px;
+  border-radius:12px;
+  background:#fff3f5;
+  color:#e11d48;
+  text-align:center;
+  font-size:12px;
+  font-weight:900;
+}
+.user-strip{
+  position:relative;
+  z-index:3;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  min-height:34px;
+  padding:7px 14px;
+  border-bottom:1px solid #e4edf7;
+  background:#f8fbff;
+  color:#42536d;
+  font-size:11px;
+  font-weight:800;
+}
+.user-strip b{color:#0f6bff;font-weight:900;white-space:nowrap;display:block;width:100%;text-align:left}
+.user-strip span{display:none}
+.app-shell.logged-in .app-content{height:calc(100% - 160px)}
+.app-shell.logged-in .icon-button.alarm{color:#0f6bff}
+@media(max-width:460px){
+  .login-screen{padding:20px}
+  .login-card{padding:24px 18px 18px}
+  .user-strip{padding:6px 12px;font-size:10.5px}
+  .app-shell.logged-in .app-content{height:calc(100% - 166px)}
+}
+
+
+/* 31차 수정: 서버연동 1차 상태 표시 */
+.login-server-status{
+  margin-top:12px;
+  padding:10px 12px;
+  border-radius:13px;
+  border:1px solid #dbe8f7;
+  background:#f8fbff;
+  color:#52647d;
+  font-size:12px;
+  font-weight:900;
+  text-align:center;
+}
+.login-server-status.ok{
+  border-color:#bfeedd;
+  background:#effdf6;
+  color:#0b8a5b;
+}
+.login-server-status.fail{
+  border-color:#fed9a8;
+  background:#fff7eb;
+  color:#b86500;
+}
+.login-card button[disabled]{
+  opacity:.7;
+  cursor:wait;
+}
+
+
+/* 32차 수정: 로그인 아이디 저장 + 로그인 유지 */
+.login-save-options{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin:2px 0 14px;
+}
+.login-save-options label{
+  flex:1;
+  margin:0;
+  min-height:38px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  border:1px solid #dbe8f7;
+  border-radius:12px;
+  background:#f8fbff;
+  color:#334155;
+  font-size:12px;
+  font-weight:900;
+}
+.login-save-options input{
+  width:15px!important;
+  height:15px!important;
+  min-height:15px!important;
+  margin:0!important;
+  padding:0!important;
+  box-shadow:none!important;
+}
+@media(max-width:460px){
+  .login-save-options{gap:8px;margin-bottom:12px}
+  .login-save-options label{min-height:36px;font-size:11.5px;border-radius:11px}
+}
+
+/* 36차 수정: 홈 화면 추가 안내 버튼 + 바로가기 아이콘 안내 팝업 */
+.shortcut-guide-button{
+  width:100%;
+  min-height:42px;
+  margin:12px 0 0;
+  border:1px solid #c8d9ee;
+  border-radius:13px;
+  background:#f8fbff;
+  color:#0f6bff;
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:-.03em;
+}
+.shortcut-guide-button:active{transform:translateY(1px)}
+.shortcut-guide-modal{
+  z-index:70;
+  align-items:flex-end;
+  padding:18px;
+}
+.shortcut-guide-card{
+  max-width:360px;
+  max-height:88%;
+  overflow:auto;
+  text-align:left;
+  padding:22px 18px 16px;
+}
+.shortcut-guide-card strong{
+  text-align:center;
+  margin-bottom:10px;
+}
+.shortcut-guide-intro{
+  margin:0 0 13px!important;
+  color:#52647d!important;
+  font-size:13px!important;
+  font-weight:800!important;
+  text-align:center;
+}
+.shortcut-guide-section{
+  border:1px solid #dbe8f7;
+  border-radius:15px;
+  background:#f8fbff;
+  padding:12px 12px 10px;
+  margin-bottom:10px;
+}
+.shortcut-guide-section>b{
+  display:block;
+  color:#0f6bff;
+  font-size:14px;
+  font-weight:900;
+  margin-bottom:8px;
+}
+.shortcut-guide-section ol{
+  margin:0;
+  padding-left:20px;
+  color:#334155;
+  font-size:13px;
+  font-weight:800;
+  line-height:1.55;
+}
+.shortcut-guide-section li{margin:3px 0}
+.shortcut-guide-note{
+  margin:10px 0 14px!important;
+  padding:10px 12px;
+  border-radius:13px;
+  background:#fff7eb;
+  color:#9a5a00!important;
+  font-size:12px!important;
+  font-weight:900!important;
+  text-align:center;
+}
+.shortcut-guide-card button{
+  text-align:center;
+}
+@media(max-width:460px){
+  .shortcut-guide-modal{padding:12px;align-items:flex-end}
+  .shortcut-guide-card{border-radius:22px 22px 18px 18px;max-height:90%}
+  .shortcut-guide-button{min-height:40px;font-size:12.5px}
+}
+
+
+/* 37차 수정: 로그인 화면 모바일 맞춤 + 바로가기 설치 버튼 강화 */
+.app-shell.logged-out{
+  position:fixed;
+  inset:0;
+  width:100vw;
+  height:100dvh;
+  min-height:100dvh;
+  max-width:none;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  background:linear-gradient(180deg,#ffffff 0%,#edf6ff 100%);
+}
+.app-shell.logged-out:before{
+  background:radial-gradient(circle at 82% -8%,rgba(15,107,255,.13),transparent 34%),linear-gradient(180deg,#ffffff 0%,#edf6ff 100%);
+}
+.app-shell.logged-out .login-screen{
+  position:fixed;
+  inset:0;
+  width:100vw;
+  min-height:100dvh;
+  align-items:flex-start;
+  justify-content:center;
+  overflow:auto;
+  padding:clamp(18px,6vh,54px) 16px 24px;
+}
+.app-shell.logged-out .login-card{
+  width:min(94vw,450px);
+  max-width:none;
+  padding:clamp(24px,5vw,34px) clamp(18px,5vw,28px) 22px;
+  border-radius:26px;
+}
+.app-shell.logged-out .login-logo{
+  width:68px;
+  height:68px;
+  border-radius:23px;
+  margin-bottom:16px;
+}
+.app-shell.logged-out .login-logo svg{width:36px;height:36px}
+.app-shell.logged-out .login-card h1{font-size:25px}
+.app-shell.logged-out .login-card p{font-size:14px;margin-bottom:22px}
+.app-shell.logged-out .login-card label{font-size:14px;margin-bottom:14px}
+.app-shell.logged-out .login-card input{
+  height:52px;
+  border-radius:15px;
+  font-size:16px;
+  padding:0 15px;
+}
+.app-shell.logged-out .login-save-options{gap:10px;margin:4px 0 16px}
+.app-shell.logged-out .login-save-options label{
+  min-height:44px;
+  font-size:13px;
+  border-radius:14px;
+}
+.app-shell.logged-out .primary{
+  height:54px;
+  font-size:17px;
+  border-radius:16px;
+}
+.app-shell.logged-out .login-server-status{
+  min-height:42px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:13px;
+}
+.app-shell.logged-out .shortcut-guide-button{
+  min-height:50px;
+  border-radius:15px;
+  background:linear-gradient(180deg,#ffffff 0%,#f3f8ff 100%);
+  border-color:#9cc4ff;
+  font-size:15px;
+  box-shadow:0 8px 18px rgba(15,107,255,.08);
+}
+.app-shell.logged-out .shortcut-guide-button.installed{
+  border-color:#bfeedd;
+  background:#effdf6;
+  color:#0b8a5b;
+}
+.shortcut-install-status{
+  margin:0 0 12px!important;
+  padding:10px 12px;
+  border-radius:13px;
+  border:1px solid #cfe3ff;
+  background:#f2f8ff;
+  color:#0f4ca8!important;
+  font-size:12.5px!important;
+  font-weight:900!important;
+  text-align:center;
+}
+.shortcut-guide-card{
+  width:min(94vw,430px);
+}
+@media(max-width:460px){
+  html,body{width:100%;min-height:100%;overflow-x:hidden}
+  body{display:block;padding:0;background:#edf6ff}
+  .app-shell.logged-out .login-screen{padding:24px 14px 22px}
+  .app-shell.logged-out .login-card{width:100%;border-radius:24px}
+  .app-shell.logged-out .login-card h1{font-size:24px}
+  .app-shell.logged-out .login-card input{height:50px}
+  .app-shell.logged-out .shortcut-guide-button{font-size:14px;min-height:48px}
+}
+@media(max-height:760px){
+  .app-shell.logged-out .login-screen{padding-top:14px}
+  .app-shell.logged-out .login-logo{width:56px;height:56px;margin-bottom:12px}
+  .app-shell.logged-out .login-logo svg{width:30px;height:30px}
+  .app-shell.logged-out .login-card h1{font-size:22px}
+  .app-shell.logged-out .login-card p{margin-bottom:16px}
+  .app-shell.logged-out .login-card input{height:46px}
+  .app-shell.logged-out .primary{height:50px}
+  .app-shell.logged-out .shortcut-guide-button{min-height:44px}
+}
+
+
+/* 38차 수정: 자동 설치창이 안 뜨는 환경에서도 수동 추가 안내가 확실히 보이도록 보강 */
+.shortcut-http-notice{
+  margin:0 0 12px;
+  padding:11px 12px;
+  border-radius:14px;
+  background:#fff7e6;
+  border:1px solid #ffd591;
+  color:#8a4b00;
+  font-size:13px;
+  font-weight:900;
+  line-height:1.45;
+}
+.shortcut-guide-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:4px;
+}
+.shortcut-guide-actions button{
+  width:100%;
+  min-height:44px;
+  border:0;
+  border-radius:14px;
+  font-weight:900;
+}
+#copyShortcutLink{
+  background:#edf6ff;
+  color:#0f4ca8;
+  border:1px solid #cfe3ff;
+}
+#shortcutGuideClose{
+  background:#0f6bff;
+  color:#fff;
+}
+.app-shell.logged-out .shortcut-guide-button{
+  font-weight:1000;
+}
+@media(max-width:420px){
+  .shortcut-guide-actions{grid-template-columns:1fr}
+}
+
+
+/* 39차 수정: 로그인 화면 크기 재보정 + 문자 링크/크롬 안내 유지 */
+body:has(.app-shell.logged-out){
+  display:block!important;
+  padding:0!important;
+  background:#edf6ff!important;
+  min-height:100dvh!important;
+  overflow:hidden!important;
+}
+.app-shell.logged-out{
+  position:fixed!important;
+  inset:0!important;
+  width:100vw!important;
+  height:100dvh!important;
+  min-height:100dvh!important;
+  max-width:none!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  overflow:hidden!important;
+}
+.app-shell.logged-out .login-screen{
+  position:fixed!important;
+  inset:0!important;
+  width:100vw!important;
+  min-height:100dvh!important;
+  display:flex!important;
+  align-items:flex-start!important;
+  justify-content:center!important;
+  padding:clamp(16px,4.5vh,42px) 10px 18px!important;
+  overflow-y:auto!important;
+  background:linear-gradient(180deg,#ffffff 0%,#edf6ff 100%)!important;
+}
+.app-shell.logged-out .login-card{
+  width:calc(100vw - 20px)!important;
+  max-width:560px!important;
+  min-width:0!important;
+  margin:0 auto!important;
+  padding:28px 18px 20px!important;
+  border-radius:25px!important;
+  box-shadow:0 14px 36px rgba(22,72,124,.12)!important;
+}
+.app-shell.logged-out .login-logo{
+  width:72px!important;
+  height:72px!important;
+  border-radius:24px!important;
+  margin-bottom:16px!important;
+}
+.app-shell.logged-out .login-logo svg{width:38px!important;height:38px!important}
+.app-shell.logged-out .login-card h1{
+  font-size:28px!important;
+  line-height:1.16!important;
+  margin-bottom:8px!important;
+}
+.app-shell.logged-out .login-card p{
+  font-size:15px!important;
+  margin:0 0 24px!important;
+}
+.app-shell.logged-out .login-card label{
+  font-size:15px!important;
+  margin-bottom:15px!important;
+}
+.app-shell.logged-out .login-card input{
+  height:56px!important;
+  border-radius:16px!important;
+  font-size:17px!important;
+  padding:0 16px!important;
+}
+.app-shell.logged-out .login-save-options{
+  gap:10px!important;
+  margin:4px 0 17px!important;
+}
+.app-shell.logged-out .login-save-options label{
+  min-height:46px!important;
+  font-size:14px!important;
+  border-radius:15px!important;
+}
+.app-shell.logged-out .primary{
+  height:56px!important;
+  font-size:18px!important;
+  border-radius:17px!important;
+}
+.app-shell.logged-out .login-server-status{
+  min-height:44px!important;
+  font-size:13.5px!important;
+}
+.app-shell.logged-out .shortcut-guide-button{
+  min-height:54px!important;
+  font-size:16px!important;
+  border-radius:17px!important;
+  margin-top:12px!important;
+}
+.login-sms-guide{
+  margin:9px 0 0;
+  padding:10px 11px;
+  border-radius:14px;
+  background:#f8fbff;
+  border:1px dashed #bfd6f3;
+  color:#445871;
+  font-size:13px;
+  font-weight:900;
+  line-height:1.42;
+  text-align:center;
+}
+.shortcut-guide-card{
+  width:min(96vw,460px)!important;
+}
+.shortcut-guide-intro,
+.shortcut-install-status,
+.shortcut-http-notice,
+.shortcut-guide-note{
+  line-height:1.45!important;
+}
+@media(max-width:420px){
+  .app-shell.logged-out .login-screen{padding:18px 9px 16px!important}
+  .app-shell.logged-out .login-card{width:calc(100vw - 18px)!important;padding:24px 16px 18px!important;border-radius:23px!important}
+  .app-shell.logged-out .login-logo{width:64px!important;height:64px!important;margin-bottom:13px!important}
+  .app-shell.logged-out .login-logo svg{width:34px!important;height:34px!important}
+  .app-shell.logged-out .login-card h1{font-size:26px!important}
+  .app-shell.logged-out .login-card p{font-size:14px!important;margin-bottom:20px!important}
+  .app-shell.logged-out .login-card label{font-size:14px!important;margin-bottom:13px!important}
+  .app-shell.logged-out .login-card input{height:52px!important;font-size:16px!important}
+  .app-shell.logged-out .primary{height:54px!important;font-size:17px!important}
+  .app-shell.logged-out .shortcut-guide-button{min-height:51px!important;font-size:15px!important}
+  .login-sms-guide{font-size:12.5px;padding:9px 10px}
+}
+@media(max-height:720px){
+  .app-shell.logged-out .login-screen{padding-top:10px!important}
+  .app-shell.logged-out .login-logo{width:56px!important;height:56px!important;margin-bottom:10px!important}
+  .app-shell.logged-out .login-logo svg{width:30px!important;height:30px!important}
+  .app-shell.logged-out .login-card{padding-top:20px!important;padding-bottom:16px!important}
+  .app-shell.logged-out .login-card h1{font-size:23px!important}
+  .app-shell.logged-out .login-card p{margin-bottom:14px!important}
+  .app-shell.logged-out .login-card input{height:47px!important}
+  .app-shell.logged-out .login-save-options label{min-height:40px!important;font-size:12.5px!important}
+  .app-shell.logged-out .primary{height:49px!important}
+  .app-shell.logged-out .shortcut-guide-button{min-height:46px!important}
+  .login-sms-guide{font-size:12px;padding:8px 9px}
+}
+
+/* 46차 수정: 모바일 임시 근로자 대신 서버 근로자 기준 안내 */
+.form-note {
+  margin: -4px 0 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #f1f5f9;
+  color: #334155;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+
+/* 57차 수정: 모바일 근로자 간단 등록 필수/선택 기준 정리 */
+.worker-register-card .form-note{
+  margin-bottom:14px;
+}
+.worker-register-card label em,
+.worker-register-card .gender-row em{
+  color:#dc2626;
+  font-style:normal;
+  font-weight:800;
+}
+.worker-register-card .gender-row.required span{
+  min-width:72px;
+}
+.worker-register-card button[disabled]{
+  opacity:.65;
+  pointer-events:none;
+}
+
+
+/* mobile_6: 차량관리 조회 전용 화면 */
+#vehicleScreen.active{
+  display:block;
+  min-height:100%;
+  overflow:visible;
+}
+#vehicleScreen .vehicle-tabbar{
+  display:flex;
+  gap:7px;
+  overflow-x:auto;
+  padding:0 0 8px;
+  margin:0 0 8px;
+  scrollbar-width:none;
+}
+#vehicleScreen .vehicle-tabbar::-webkit-scrollbar{
+  display:none;
+}
+.vehicle-tab-button{
+  flex:0 0 auto;
+  min-height:38px;
+  padding:0 13px;
+  border:1px solid #dbe7f3;
+  border-radius:999px;
+  background:#ffffff;
+  color:#475569;
+  font-size:12px;
+  font-weight:900;
+  box-shadow:0 8px 18px rgba(32, 48, 84, .05);
+}
+.vehicle-tab-button.active{
+  background:#0f172a;
+  color:#ffffff;
+  border-color:#0f172a;
+}
+.vehicle-tab-panel[hidden]{
+  display:none !important;
+}
+.vehicle-section-title{
+  margin:10px 0 8px;
+}
+.vehicle-list-view,
+.vehicle-recent-list{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.vehicle-card,
+.vehicle-log-row,
+.vehicle-empty{
+  background:#ffffff;
+  border:1px solid #e5edf7;
+  border-radius:16px;
+  padding:12px;
+  box-shadow:0 10px 22px rgba(32, 48, 84, .06);
+}
+.vehicle-card,
+.vehicle-log-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+.vehicle-card b,
+.vehicle-log-row b{
+  display:block;
+  font-size:14px;
+  color:#172554;
+  font-weight:1000;
+}
+.vehicle-card small,
+.vehicle-log-row small{
+  display:block;
+  margin-top:4px;
+  font-size:11px;
+  color:#64748b;
+  font-weight:800;
+}
+.vehicle-log-row span{
+  flex:0 0 auto;
+  font-size:12px;
+  color:#334155;
+  font-weight:900;
+  text-align:right;
+}
+.vehicle-empty{
+  color:#64748b;
+  font-size:13px;
+  font-weight:800;
+  text-align:center;
+}
+@media(max-width:420px){
+  .vehicle-card,
+  .vehicle-log-row,
+  .vehicle-empty{padding:11px;border-radius:14px}
+}
+
+/* vehicle run odometer previous value display */
+.readonly-info.vehicle-prev-odometer{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  padding:10px 12px;
+  border:1px solid rgba(148,163,184,.35);
+  border-radius:14px;
+  background:#f8fafc;
+  color:#334155;
+}
+.readonly-info.vehicle-prev-odometer span{
+  font-size:12px;
+  font-weight:700;
+  color:#64748b;
+}
+.readonly-info.vehicle-prev-odometer strong{
+  font-size:18px;
+  font-weight:800;
+  color:#0f172a;
+}
+.readonly-info.vehicle-prev-odometer small{
+  font-size:12px;
+  color:#64748b;
+}
+
+
+/* mobile_6: 선택 상태 카드 아이콘 식별성 보강 */
+.status-card.active i,
+.app-shell.home-mode #homeScreen .status-card.active i{
+  width:28px;
+  height:28px;
+  border-radius:999px;
+  background:#fff;
+  display:grid;
+  place-items:center;
+  opacity:1;
+}
+.status-card.teal.active i,
+.app-shell.home-mode #homeScreen .status-card.teal.active i{color:#1e9f87!important}
+.status-card.green.active i,
+.app-shell.home-mode #homeScreen .status-card.green.active i{color:#2f7cff!important}
+.status-card.red.active i,
+.app-shell.home-mode #homeScreen .status-card.red.active i{color:#ef5e68!important}
+.status-card.blue.active i,
+.app-shell.home-mode #homeScreen .status-card.blue.active i{color:#3678ff!important}
+.status-card.orange.active i,
+.app-shell.home-mode #homeScreen .status-card.orange.active i{color:#ee9532!important}
+.status-card.purple.active i,
+.app-shell.home-mode #homeScreen .status-card.purple.active i{color:#8755df!important}
+.status-card.active i svg,
+.app-shell.home-mode #homeScreen .status-card.active i svg{
+  width:20px;
+  height:20px;
+}
+
+
+/* mobile_17: 홈 근로자 간단 정보 + 전화 연결 */
+.home-worker-clickable{
+  cursor:pointer;
+  -webkit-tap-highlight-color:rgba(15,107,255,.14);
+}
+.home-worker-clickable:active,
+.home-worker-clickable:focus{
+  outline:2px solid rgba(15,107,255,.22);
+  border-color:#9bc4ff;
+  background:#f7fbff;
+}
+.home-worker-name{
+  text-decoration:underline;
+  text-underline-offset:3px;
+  text-decoration-thickness:1px;
+}
+.worker-info-modal{
+  align-items:flex-end;
+  padding:16px;
+}
+.worker-info-card{
+  max-width:360px;
+  border-radius:22px;
+  text-align:left;
+  padding:18px 16px 14px;
+}
+.worker-info-card strong#homeWorkerInfoTitle{
+  text-align:left;
+  margin-bottom:10px;
+  padding-right:4px;
+}
+.worker-info-body{
+  display:grid;
+  gap:10px;
+  margin-bottom:14px;
+}
+.worker-info-phone{
+  display:block;
+  border:1px solid #b9d7ff;
+  border-radius:16px;
+  padding:13px 14px;
+  background:#f0f7ff;
+  color:#0f55d8;
+  text-decoration:none;
+  box-shadow:0 8px 18px rgba(15,107,255,.08);
+}
+.worker-info-phone span,
+.worker-info-phone small,
+.worker-info-line span{
+  display:block;
+  color:#64748b;
+  font-size:11px;
+  font-weight:900;
+}
+.worker-info-phone strong{
+  display:block;
+  margin-top:4px;
+  color:#0b4ed0;
+  font-size:20px;
+  font-weight:1000;
+  letter-spacing:-.02em;
+}
+.worker-info-phone small{margin-top:3px;color:#0f6bff}
+.worker-info-phone.disabled{
+  border-color:#e2e8f0;
+  background:#f8fafc;
+  color:#64748b;
+  box-shadow:none;
+}
+.worker-info-phone.disabled strong{color:#475569;font-size:15px}
+.worker-info-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:7px;
+}
+.worker-info-line{
+  min-height:58px;
+  border:1px solid #e4edf8;
+  border-radius:13px;
+  background:#fff;
+  padding:10px;
+}
+.worker-info-line b{
+  display:block;
+  margin-top:5px;
+  color:#17233b;
+  font-size:13px;
+  font-weight:900;
+  line-height:1.25;
+  word-break:break-word;
+}
+.worker-info-memo{
+  margin:0;
+  border:1px solid #edf2f7;
+  border-radius:13px;
+  background:#fbfdff;
+  padding:10px;
+  color:#475569;
+  font-size:12px;
+  font-weight:800;
+  line-height:1.45;
+}
+.worker-info-memo-box{
+  margin:0;
+  border:1px solid #dbeafe;
+  border-radius:15px;
+  background:#fbfdff;
+  padding:11px 12px;
+}
+.worker-info-memo-box span{
+  display:block;
+  color:#64748b;
+  font-size:11px;
+  font-weight:1000;
+}
+.worker-info-memo-box p{
+  min-height:46px;
+  margin:7px 0 0;
+  color:#334155;
+  font-size:13px;
+  font-weight:850;
+  line-height:1.45;
+  white-space:pre-wrap;
+  word-break:break-word;
+}
+.worker-info-card button{
+  margin-top:2px;
+  text-align:center;
+}
+@media(max-width:380px){
+  .worker-info-grid{grid-template-columns:1fr}
+  .worker-info-phone strong{font-size:18px}
+}
+
+/* 22차 수정: 전체 페이지 확인 후 반응형 레이아웃 재정리 */
+.app-shell.logged-in{
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+}
+.app-shell.logged-in .app-header,
+.app-shell.logged-in .user-strip,
+.app-shell.logged-in .bottom-nav{
+  flex:0 0 auto;
+}
+.app-shell.logged-in .bottom-nav{
+  position:relative;
+  left:auto;
+  right:auto;
+  bottom:auto;
+  height:72px;
+}
+.app-shell.logged-in .app-content{
+  flex:1 1 auto;
+  height:auto!important;
+  min-height:0;
+  overflow:auto;
+}
+.app-shell.logged-in.home-mode .app-content{
+  overflow:hidden;
+  padding:14px 12px 10px;
+}
+.app-shell.logged-in.home-mode #homeScreen.active{
+  height:100%;
+  min-height:0;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+}
+.app-shell.logged-in.home-mode #homeScreen .top-title,
+.app-shell.logged-in.home-mode #homeScreen .status-grid{
+  flex:0 0 auto;
+}
+.app-shell.logged-in.home-mode #homeScreen .home-worker-card{
+  flex:1 1 auto;
+  min-height:0;
+  margin-top:12px;
+  margin-bottom:0;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+}
+.app-shell.logged-in.home-mode #homeScreen .home-worker-card .section-title-row,
+.app-shell.logged-in.home-mode #homeScreen .home-worker-head{
+  flex:0 0 auto;
+}
+.app-shell.logged-in.home-mode #homeScreen .home-worker-list{
+  flex:1 1 auto;
+  min-height:0;
+  max-height:none!important;
+  overflow-y:auto;
+  overflow-x:hidden;
+}
+.app-shell.logged-in.home-mode #homeScreen .home-worker-empty{
+  min-height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.app-shell.logged-in.attendance-mode .app-content{
+  overflow:hidden;
+}
+@media(max-width:460px){
+  .app-shell.logged-in.home-mode .app-content{
+    padding:12px 10px 8px;
+  }
+  .app-shell.logged-in.home-mode #homeScreen .home-worker-card{
+    margin-top:10px;
+  }
+}
+

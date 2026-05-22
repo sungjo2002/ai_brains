@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0F6BFF" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="인력관리" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>인력관리 모바일 앱</title>
+  <link rel="manifest" href="manifest.json?v=92" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png" />
+  <link rel="stylesheet" href="styles.css?v=92" />
+</head>
+<body>
+  <svg class="svg-sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/><path d="M10 20a2 2 0 0 0 4 0"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></symbol>
+    <symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></symbol>
+    <symbol id="i-attendance" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></symbol>
+    <symbol id="i-registration" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="16" y1="11" x2="22" y2="11"/></symbol>
+    <symbol id="i-business" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24"><path d="M5 17h14l-1.2-5.2A2 2 0 0 0 15.85 10H8.15a2 2 0 0 0-1.95 1.8L5 17Z"/><path d="M7 10 8.5 6.8A2 2 0 0 1 10.3 5.6h3.4a2 2 0 0 1 1.8 1.2L17 10"/><circle cx="7.5" cy="17.5" r="1.5"/><circle cx="16.5" cy="17.5" r="1.5"/></symbol>
+    <symbol id="i-vehicle" viewBox="0 0 24 24"><path d="M5 17h14l-1.2-5.2A2 2 0 0 0 15.85 10H8.15a2 2 0 0 0-1.95 1.8L5 17Z"/><path d="M7 10 8.5 6.8A2 2 0 0 1 10.3 5.6h3.4a2 2 0 0 1 1.8 1.2L17 10"/><circle cx="7.5" cy="17.5" r="1.5"/><circle cx="16.5" cy="17.5" r="1.5"/></symbol>
+    <symbol id="i-presence" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="m9 12 2 2 4-4" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="m9 12 2 2 4-4" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+    <symbol id="i-absence" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="m15 9-6 6m0-6 6 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="m15 9-6 6m0-6 6 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+    <symbol id="i-late" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M12 7v5l3 2" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M12 7v5l3 2" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+    <symbol id="i-early" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4" fill="currentColor"/><path d="M8 12h7m-3-3 3 3-3 3" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+    <symbol id="i-log-out" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4" fill="currentColor"/><path d="M8 12h7m-3-3 3 3-3 3" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+    <symbol id="i-hospital" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4" fill="currentColor"/><path d="M12 7v10M7 12h10" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+    <symbol id="i-warning" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" fill="currentColor"/><path d="M12 9v4m0 4h0" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" fill="currentColor"/><path d="M12 9v4m0 4h0" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+    <symbol id="i-unauthorized" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="currentColor"/><circle cx="12" cy="12" r="5" fill="white"/><path d="m14 10-4 4m0-4 4 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+    <symbol id="i-ban" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="currentColor"/><circle cx="12" cy="12" r="5" fill="white"/><path d="m14 10-4 4m0-4 4 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+    <symbol id="i-off" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></symbol>
+    <symbol id="i-empty" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M16 16s-1.5-2-4-2-4 2-4 2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></symbol>
+    <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M17.5 19H7a5 5 0 1 1 1.1-9.9A7 7 0 0 1 21 12a4 4 0 0 1-3.5 7Z"/><path d="M12 12v6M9.5 15.5 12 18l2.5-2.5"/></symbol>
+    <symbol id="i-server" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="6" rx="2"/><rect x="4" y="14" width="16" height="6" rx="2"/><path d="M8 7h.01M8 17h.01"/></symbol>
+    <symbol id="i-sync" viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 1-15.3 6.4"/><path d="M21 12v5h-5"/><path d="M3 12a9 9 0 0 1 15.3-6.4"/><path d="M3 12V7h5"/></symbol>
+  </svg>
+
+  <div class="app-shell logged-out">
+
+    <section class="login-screen" id="loginScreen" aria-label="로그인 화면">
+      <form class="login-card" id="loginForm">
+        <div class="login-logo"><svg><use href="#i-users" /></svg></div>
+        <h1>인력관리 모바일</h1>
+        <p>관리자 계정으로 로그인하세요.</p>
+        <label>아이디<input id="loginId" name="loginId" autocomplete="username" placeholder="아이디" required /></label>
+        <label>비밀번호<input id="loginPassword" name="loginPassword" type="password" autocomplete="current-password" placeholder="비밀번호" required /></label>
+        <div class="login-save-options">
+          <label><input type="checkbox" id="saveLoginId" checked /> 아이디 저장</label>
+          <label><input type="checkbox" id="keepLogin" checked /> 로그인 유지</label>
+        </div>
+        <button class="primary" type="submit">로그인</button>
+        <div class="login-error" id="loginError" hidden>아이디 또는 비밀번호를 확인하세요.</div>
+        <div class="login-server-status" id="loginServerStatus">서버 연결 확인 중...</div>
+        <button class="shortcut-guide-button" type="button" id="shortcutGuideOpen">홈 화면에 바로가기 추가</button>
+        <div class="login-sms-guide">문자로 받은 링크는 크롬에서 열고, 추가 후 바탕화면 아이콘으로 실행하세요.</div>
+      </form>
+    </section>
+    <header class="app-header">
+      <button class="icon-button" aria-label="메뉴"><svg><use href="#i-menu" /></svg></button>
+      <strong id="pageTitle">홈</strong>
+      <button class="icon-button alarm" id="logoutButton" type="button" aria-label="로그아웃"><svg><use href="#i-log-out" /></svg></button>
+    </header>
+    <div class="user-strip" id="userStrip" hidden></div>
+
+    <main class="app-content">
+      <section class="screen active" id="homeScreen" data-title="홈">
+        <div class="section-title-row top-title">
+          <h2>오늘 현황</h2>
+          <span class="muted" id="homeDateLabel">오늘 날짜</span>
+        </div>
+
+        <div class="status-grid" id="homeStatusGrid">
+          <article class="status-card teal active" role="button" tabindex="0" data-worker-status="all"><div><span>전체</span><strong>0</strong><small>명</small></div><i><svg><use href="#i-users" /></svg></i></article>
+          <article class="status-card green" role="button" tabindex="0" data-worker-status="present"><div><span>출석</span><strong id="homePresent">0</strong><small>명</small></div><i><svg><use href="#i-presence" /></svg></i></article>
+          <article class="status-card red" role="button" tabindex="0" data-worker-status="absent"><div><span>결근</span><strong>0</strong><small>명</small></div><i><svg><use href="#i-absence" /></svg></i></article>
+          <article class="status-card blue" role="button" tabindex="0" data-worker-status="hospital"><div><span>병원</span><strong>0</strong><small>명</small></div><i><svg><use href="#i-hospital" /></svg></i></article>
+          <article class="status-card orange" role="button" tabindex="0" data-worker-status="late"><div><span>지각/조퇴</span><strong>0</strong><small>명</small></div><i><svg><use href="#i-late" /></svg></i></article>
+          <article class="status-card purple" role="button" tabindex="0" data-worker-status="unauthorized"><div><span>무단결근/무단이탈</span><strong>0</strong><small>명</small></div><i><svg><use href="#i-unauthorized" /></svg></i></article>
+        </div>
+
+
+        <section class="home-worker-card" aria-live="polite">
+          <div class="section-title-row">
+            <h2 id="homeWorkerTitle">전체 근로자</h2>
+            <span class="muted" id="homeWorkerCount">0명</span>
+          </div>
+          <div class="home-worker-head"><span>이름</span><span>근무사업장</span><span>근무형태</span><span>현재상태</span></div>
+          <div class="home-worker-list" id="homeWorkerList"><div class="home-worker-empty">서버 근로자 목록을 불러오는 중입니다.</div></div>
+        </section>
+      </section>
+
+      <section class="screen" id="attendanceScreen" data-title="근태관리">
+        <div class="tabs" id="attendanceTabs" role="tablist">
+          <button class="tab active" type="button" data-att-tab="today">오늘 근태</button>
+          <button class="tab" type="button" data-att-tab="month">월간 근태</button>
+          <button class="tab" type="button" data-att-tab="worker">근로자별</button>
+          <button class="tab" type="button" data-att-tab="status">상태별</button>
+        </div>
+
+        <div class="filter-row attendance-filter">
+          <label>근무사업장<select id="attSiteFilter"><option>전체</option><option>1공장</option><option>2공장</option><option>현장 A</option></select></label>
+        </div>
+        <div class="attendance-month-bar" aria-label="조회 월 선택">
+          <span class="month-bar-label">조회 월</span>
+          <div class="attendance-month-controls">
+            <button type="button" id="filterPrevMonthBtn">이전달</button>
+            <strong id="filterMonthText">오늘 기준</strong>
+            <button type="button" id="filterNextMonthBtn">다음달</button>
+          </div>
+        </div>
+        <div class="attendance-lock-notice" id="attendanceLockNotice" hidden>마감 상태 확인 중</div>
+
+        <section class="attendance-panel active" id="attPanelToday" data-panel="today">
+          <div class="month-card today-card">
+            <div class="month-header compact"><button type="button" id="todayPrevBtn">‹</button><strong id="todayTitle">오늘 근태</strong><button type="button" id="todayNextBtn">›</button></div>
+            <div class="attendance-list" id="todayAttendanceList"></div>
+          </div>
+        </section>
+
+        <section class="attendance-panel" id="attPanelMonth" data-panel="month">
+          <div class="month-card">
+            <div class="table-scroll">
+              <table class="attendance-table" id="attendanceTable">
+                <thead></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+            <p class="hint">※ 이름 칸은 고정, 날짜 칸은 좌우로 스크롤됩니다. 칸을 한 번 누르면 선택 상태가 입력되고, 같은 상태를 다시 누르면 해제됩니다.</p>
+          </div>
+        </section>
+
+        <section class="attendance-panel" id="attPanelWorker" data-panel="worker">
+          <div class="month-card worker-attendance-card">
+            <div class="worker-select-row"><label>근로자 선택<select id="attWorkerSelect"></select></label></div>
+            <div class="worker-summary" id="workerAttendanceSummary"></div>
+            <div class="table-scroll worker-month-scroll">
+              <table class="attendance-table worker-month-table" id="workerMonthTable"><thead></thead><tbody></tbody></table>
+            </div>
+          </div>
+        </section>
+
+        <section class="attendance-panel" id="attPanelStatus" data-panel="status">
+          <div class="month-card status-attendance-card">
+            <div class="status-filter-row" id="attStatusFilter">
+              <button type="button" class="active" data-status-filter="present">출석</button>
+              <button type="button" data-status-filter="absent">결근</button>
+              <button type="button" data-status-filter="hospital">병원</button>
+              <button type="button" data-status-filter="late">지각</button>
+              <button type="button" data-status-filter="early">조퇴</button>
+              <button type="button" data-status-filter="off">휴무</button>
+              <button type="button" data-status-filter="unauthorized_absent">무단결근</button>
+              <button type="button" data-status-filter="unauthorized_leave">무단이탈</button>
+            </div>
+            <div class="attendance-list" id="statusAttendanceList"></div>
+          </div>
+        </section>
+
+        <h2 class="block-title">상태 빠른 등록</h2>
+        <div class="quick-status" id="quickStatus">
+          <button type="button" class="active" data-state="present"><span class="mini-icon ok"><svg><use href="#i-presence" /></svg></span>출석</button>
+          <button type="button" data-state="absent"><span class="mini-icon bad"><svg><use href="#i-absence" /></svg></span>결근</button>
+          <button type="button" data-state="hospital"><span class="mini-icon blue"><svg><use href="#i-hospital" /></svg></span>병원</button>
+          <button type="button" data-state="late"><span class="mini-icon orange"><svg><use href="#i-clock" /></svg></span>지각</button>
+          <button type="button" data-state="early"><span class="mini-icon purple"><svg><use href="#i-early" /></svg></span>조퇴</button>
+          <button type="button" data-state="off"><span class="mini-icon gray"><svg><use href="#i-off" /></svg></span>휴무</button>
+          <button type="button" data-state="unauthorized_absent"><span class="mini-icon bad"><svg><use href="#i-ban" /></svg></span>무단결근</button>
+          <button type="button" data-state="unauthorized_leave"><span class="mini-icon bad"><svg><use href="#i-ban" /></svg></span>무단이탈</button>
+        </div>
+      </section>
+
+      <section class="screen" id="workerScreen" data-title="근로자등록">
+        <form class="form-card worker-register-card" id="workerForm">
+          <h2>근로자 간단 등록</h2><p class="form-note">현장에서 필요한 기본 정보만 서버에 등록합니다. 상세 정보와 문서 등록은 PC에서 보완합니다.</p>
+          <label>이름 <em>*</em><input name="name" required placeholder="이름을 입력하세요" autocomplete="off" /></label>
+          <label>근무사업장 <em>*</em><select name="site" id="workerSiteSelect" required><option value="">근무사업장을 선택하세요</option></select></label>
+          <label>연락처 <em>*</em><input name="phone" id="workerPhone" required inputmode="numeric" maxlength="13" placeholder="010-1234-5678" autocomplete="off" /></label>
+          <label>국적 <em>*</em><input name="nationality" required placeholder="국적을 입력하세요" autocomplete="off" /></label>
+          <div class="choice-row gender-row required" aria-label="성별 선택"><span>성별 <em>*</em></span><label><input type="radio" name="gender" value="남성" required /> 남성</label><label><input type="radio" name="gender" value="여성" /> 여성</label></div>
+          <label>상태<select name="status" id="workerStatusSelect"><option>근무중</option><option>출근전</option><option>퇴사</option></select></label>
+          <label>메모<textarea name="memo" placeholder="필요한 내용만 입력하세요"></textarea></label>
+          <button class="primary" type="submit">근로자 서버 등록</button>
+        </form>
+      </section>
+
+      <section class="screen" id="vehicleScreen" data-title="차량관리">
+        <div class="vehicle-tabbar" role="tablist" aria-label="차량관리 메뉴">
+          <button type="button" class="vehicle-tab-button active" data-vehicle-tab="run">운행기록</button>
+          <button type="button" class="vehicle-tab-button" data-vehicle-tab="fuel">주유기록</button>
+          <button type="button" class="vehicle-tab-button" data-vehicle-tab="cost">기타비용</button>
+        </div>
+        <form class="form-card vehicle-log-form vehicle-tab-panel" id="vehicleLogForm" data-vehicle-panel="log">
+          <div class="section-title-row vehicle-section-title"><h2 id="vehicleLogFormTitle">운행기록 등록</h2><span class="muted" id="vehicleLogFormSub">모바일 등록</span></div>
+          <label>차량 <em>*</em><select id="vehicleLogVehicleSelect" required><option value="">차량을 선택하세요</option></select></label>
+          <select id="vehicleLogTypeSelect" hidden aria-hidden="true"><option value="run">운행기록</option><option value="fuel">주유기록</option><option value="cost">기타비용</option></select>
+          <div class="vehicle-log-type-fields" data-log-type="run">
+            <label>운행일 <em>*</em><input type="date" id="vehicleRunDate" required /></label>
+            <div class="readonly-info vehicle-prev-odometer" id="vehiclePreviousOdometerBox"><span>이전 계기판 km</span><strong id="vehiclePreviousOdometerText">-</strong><small id="vehiclePreviousOdometerHint">차량을 선택하면 자동으로 표시됩니다.</small></div>
+            <label>종료 계기판 km <em>*</em><input type="number" id="vehicleRunOdometer" inputmode="decimal" min="0" placeholder="예: 44975" /></label>
+            <label>왕복 횟수 <em>*</em><select id="vehicleRunTrips"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label>
+            <label>실제 운전자<input id="vehicleRunDriver" placeholder="비워두면 PC 기본 운전자 기준" autocomplete="off" /></label>
+            <label>메모<textarea id="vehicleRunNote" placeholder="특이 운행 내용을 입력하세요"></textarea></label>
+          </div>
+          <div class="vehicle-log-type-fields" data-log-type="fuel" hidden>
+            <label>주유일 <em>*</em><input type="date" id="vehicleFuelDate" required /></label>
+            <label>주유 금액 <em>*</em><input type="number" id="vehicleFuelAmount" inputmode="numeric" min="0" placeholder="예: 50000" /></label>
+            <label>비고<textarea id="vehicleFuelNote" placeholder="필요한 내용만 입력하세요"></textarea></label>
+          </div>
+          <div class="vehicle-log-type-fields" data-log-type="cost" hidden>
+            <label>비용일 <em>*</em><input type="date" id="vehicleCostDate" required /></label>
+            <label>항목<input id="vehicleCostCategory" list="vehicleCostCategoryOptions" placeholder="항목을 입력하거나 선택" autocomplete="off" /></label>
+            <datalist id="vehicleCostCategoryOptions"><option value="통행료"></option><option value="주차비"></option><option value="정비비"></option><option value="세차비"></option><option value="소모품"></option><option value="과태료"></option><option value="오일"></option><option value="기타"></option></datalist>
+            <label>금액 <em>*</em><input type="number" id="vehicleCostAmount" inputmode="numeric" min="0" placeholder="예: 12000" /></label>
+            <label>내용<input id="vehicleCostDescription" placeholder="예: 엔진오일, 톨게이트, 배터리" autocomplete="off" /></label>
+            <label>비고<textarea id="vehicleCostNote" placeholder="필요한 내용만 입력하세요"></textarea></label>
+          </div>
+          <button class="primary" id="vehicleLogSubmitButton" type="submit">운행기록 저장</button>
+        </form>
+      </section>
+
+      <section class="screen" id="syncScreen" data-title="동기화">
+        <h2 class="block-title no-top">동기화 현황</h2>
+        <div class="sync-list">
+          <article><span class="circle-icon"><svg><use href="#i-sync" /></svg></span><div><small>자동 동기화</small><b id="autoSyncStatusText">확인 중</b></div><span class="pill success" id="autoSyncStatusPill">자동</span></article>
+          <article><span class="circle-icon"><svg><use href="#i-server" /></svg></span><div><small id="serverSavedMonth">이번 달 서버 저장</small><b><span id="serverSavedCount">0</span>건</b></div><span class="pill success">저장</span></article>
+          <article><span class="circle-icon"><svg><use href="#i-cloud" /></svg></span><div><small>전송 대기</small><b><span id="pendingCount">0</span>건</b></div><span class="pill success" id="pendingStatusPill">없음</span></article>
+          <article><span class="circle-icon"><svg><use href="#i-alert" /></svg></span><div><small>실패 건수</small><b><span id="syncFailCount">0</span>건</b></div><span class="pill success" id="syncFailStatusPill">정상</span></article>
+          <article><span class="circle-icon"><svg><use href="#i-server" /></svg></span><div><small>서버 상태</small><b id="syncServerStatusText">확인 중</b></div><span class="pill success" id="syncServerStatusPill">연결 확인</span></article>
+          <article><span class="circle-icon"><svg><use href="#i-clock" /></svg></span><div><small>마지막 확인 시간</small><b id="lastSyncFull">현재 시간 기준</b></div><span class="pill success">기록</span></article>
+        </div>
+        <button class="primary sync-button" id="syncNow" type="button"><svg><use href="#i-sync" /></svg>동기화 상태 확인</button>
+        <div class="section-title-row"><h2>최근 동기화 내역</h2><span class="muted">전체 보기 ›</span></div>
+        <div id="syncHistory" class="history-list"></div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="하단 메뉴">
+      <button class="active" type="button" data-nav="homeScreen"><svg><use href="#i-home" /></svg><span>홈</span></button>
+      <button type="button" data-nav="attendanceScreen"><svg><use href="#i-clipboard" /></svg><span>근태관리</span></button>
+      <button type="button" data-nav="workerScreen"><svg><use href="#i-registration" /></svg><span>근로자등록</span></button>
+      <button type="button" data-nav="vehicleScreen"><svg><use href="#i-car" /></svg><span>차량관리</span></button>
+      <button class="nav-sync sync-success" type="button" data-nav="syncScreen" aria-label="동기화 상태 정상"><svg><use href="#i-sync" /></svg><span>동기화</span></button>
+    </nav>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <div id="homeWorkerInfoModal" class="modal-backdrop worker-info-modal" hidden role="dialog" aria-modal="true" aria-labelledby="homeWorkerInfoTitle">
+      <div class="modal-card worker-info-card">
+        <strong id="homeWorkerInfoTitle">근로자 정보</strong>
+        <div id="homeWorkerInfoBody" class="worker-info-body"></div>
+        <button type="button" id="homeWorkerInfoClose">확인</button>
+      </div>
+    </div>
+    <div id="attendanceLockModal" class="modal-backdrop" hidden role="dialog" aria-modal="true" aria-labelledby="attendanceLockModalTitle">
+      <div class="modal-card">
+        <strong id="attendanceLockModalTitle">알림</strong>
+        <p>이 월은 PC에서 마감되어 수정할 수 없습니다.</p>
+        <button type="button" id="attendanceLockModalOk">확인</button>
+      </div>
+    </div>
+    <div id="shortcutGuideModal" class="modal-backdrop shortcut-guide-modal" hidden role="dialog" aria-modal="true" aria-labelledby="shortcutGuideModalTitle">
+      <div class="modal-card shortcut-guide-card">
+        <strong id="shortcutGuideModalTitle">바로가기 추가 / 앱 설치</strong>
+        <p class="shortcut-guide-intro">문자로 받은 링크는 크롬에서 열고, 이 안내를 보고 홈 화면에 바로가기를 추가하세요.</p>
+        <p class="shortcut-install-status" id="shortcutInstallStatus">카톡 안에서 열면 제한될 수 있습니다. 문자 링크 또는 크롬에서 열어 진행하세요.</p>
+        <p class="shortcut-http-notice" id="shortcutHttpNotice" hidden>자동 설치창이 안 뜨면 오른쪽 위 메뉴에서 직접 홈 화면에 추가하세요.</p>
+        <div class="shortcut-guide-section">
+          <b>안드로이드 / 삼성폰</b>
+          <ol>
+            <li>오른쪽 위 <b>점 3개 메뉴</b>를 누릅니다.</li>
+            <li><b>홈 화면에 추가</b> 또는 <b>앱 설치</b>를 누릅니다.</li>
+            <li>이름은 <b>인력관리</b>로 저장합니다.</li>
+            <li>생성된 바탕화면 아이콘으로 다시 실행합니다.</li>
+          </ol>
+        </div>
+        <div class="shortcut-guide-section">
+          <b>아이폰</b>
+          <ol>
+            <li>사파리에서 현재 주소를 엽니다.</li>
+            <li>아래쪽 <b>공유 버튼</b>을 누릅니다.</li>
+            <li><b>홈 화면에 추가</b>를 누릅니다.</li>
+            <li>이름을 <b>인력관리</b>로 저장합니다.</li>
+          </ol>
+        </div>
+        <p class="shortcut-guide-note">주소창 없이 보려면 바탕화면의 <b>인력관리</b> 아이콘으로 다시 실행하세요. 기존 아이콘이 남아 있으면 삭제 후 다시 추가하세요.</p>
+        <div class="shortcut-guide-actions">
+          <button type="button" id="copyShortcutLink">주소 복사</button>
+          <button type="button" id="shortcutGuideClose">확인</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js?v=92"></script>
+</body>
+</html>

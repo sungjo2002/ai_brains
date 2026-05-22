@@ -1,0 +1,9 @@
+{
+  "use_server": true,
+  "base_url": "https://sungjo2003.cafe24.com",
+  "timeout_seconds": 5,
+  "snapshot_timeout_seconds": 30,
+  "health_path": "/api/health",
+  "employees_path": "/api/employees",
+  "pc_sync_key": "green_sync_2026_key_0511"
+}
