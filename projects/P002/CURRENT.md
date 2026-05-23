@@ -1,39 +1,134 @@
 # P002 현재 상태
 
-프로젝트명: 1인 기업 AI 사무실
+최종 갱신: 2026-05-23
 
-목표:
-Ollama, LM Studio, Antigravity, connect-ai, GitHub, 지식 창고, 기억 저장소를 기반으로 1인 기업용 AI 사무 자동화 시스템을 만든다.
+## 프로젝트명
 
-현재 단계:
-기획 및 기준 문서 작성 단계
+P002 1인 기업 AI 시스템
 
-현재 기준:
-- P001은 인력관리/근태/급여 프로젝트로 유지한다.
-- P002는 1인 기업 AI 사무실/자동화 시스템 전용 프로젝트로 분리한다.
-- 성조님이 실제 Antigravity에서 사용 중인 connect-ai 기준 저장소는 `https://github.com/sungjo2002/connect-ai.git` 이다.
-- `https://github.com/wonseokjung/connect-ai.git` 는 원본/참고 저장소로 본다.
-- P002에서 connect-ai를 분석하거나 수정할 때는 `sungjo2002/connect-ai`를 1차 기준으로 한다.
-- P002는 connect-ai의 개발 AI, 지식창고, 기억 저장소, GitHub 자동화 구조를 참고하되 성조님 업무용으로 확장한다.
+## 저장소 기준
 
-우선순위:
-1. P002 기준 문서 생성
-2. `sungjo2002/connect-ai` 구조 분석
-3. Ollama / LM Studio 연결 확인
-4. 명령 입력기 구조 설계
-5. 지식 창고 구조 설계
-6. 기억 저장소 구조 설계
-7. Antigravity 안에서 P002 전용 작업 흐름 정리
+```text
+기준 저장소: sungjo2002/ai_brains
+P002 기준 문서 위치: projects/P002/
+현재 기준 파일: projects/P002/CURRENT.md
+```
 
-아직 하지 않을 것:
-- Cafe24 API 실제 연결
-- ComfyUI 이미지 생성 실제 연결
-- 고객문의 자동응답
-- 24시간 서버 자동화
-- 상품 자동 등록 실행
-- 서버 파일 자동 수정
+참고/소스 관련:
 
-다음 작업:
-- `sungjo2002/connect-ai` 소스 구조 확인
-- P002 역할 AI 1차 목록 정리
-- 지식 창고/기억 저장소 설계 확정
+```text
+connect-ai는 P002 프로그램 구조 참고 대상이다.
+P002 기준 문서와 작업 상태 저장은 sungjo2002/ai_brains/projects/P002/를 우선한다.
+```
+
+## 현재 목표
+
+대표가 채팅창에 지시하면 대표비서 AI가 내용을 분석하고, AI 직원 10명 중 담당자를 자동 배정한 뒤 Ollama / LM Studio / 지식창고 / 기억저장소 / GitHub / 인터넷 자료수집 기능으로 업무를 처리하는 1인 기업용 AI 자동화 프로그램을 만든다.
+
+## 현재 최신 생성본
+
+```text
+25_web_keyword_research_connect.zip
+```
+
+## 확인 상태
+
+```text
+24_knowledge_markdown_connect.zip = 확인 완료
+25_web_keyword_research_connect.zip = 아직 확인 전
+```
+
+## 현재까지 완료된 기능
+
+```text
+화면 UI 구성
+대표 지시실 채팅창
+채팅 입력창 하단 고정
+AI 직원 조직도
+직원별 AI 설정 화면
+전체 자동 설정
+Ollama 브릿지 연결
+Ollama 모델 자동 감지
+직원별 모델 자동 배정
+Markdown 지식창고 검색
+지식창고 검색 결과를 AI 프롬프트에 포함
+인터넷 키워드 자료수집 기능 추가
+검색 결과 Markdown 저장 기능 추가
+```
+
+## 현재 Ollama 모델 기준
+
+성조님 PC에서 확인된 모델:
+
+```text
+llama3.2-vision:latest   이미지 분석용
+nomic-embed-text:latest   지식창고 검색용
+qwen2.5-coder:3b          개발 AI / 코드용
+llama3.2:3b               대표비서 / 빠른 분류용
+gemma4:latest             쇼핑몰 / 마케팅 / 콘텐츠용
+gemma4:e2b                CS / 기억 / 정산용
+```
+
+## 직원별 모델 배정 기준
+
+```text
+대표비서 AI      → llama3.2:3b
+쇼핑몰 AI        → gemma4:latest
+CS AI            → gemma4:e2b
+이미지 AI        → gemma4:latest
+개발 AI          → qwen2.5-coder:3b
+지식관리 AI      → gemma4:latest
+기억관리 AI      → gemma4:e2b
+정산 AI          → gemma4:e2b
+자동화 AI        → llama3.2:3b
+마케팅 AI        → gemma4:latest
+콘텐츠 AI        → gemma4:latest
+```
+
+전용 모델:
+
+```text
+nomic-embed-text = 지식창고 검색용, 일반 채팅 답변용 아님
+llama3.2-vision:latest = 이미지 분석용, 이미지 생성용 아님
+이미지 생성 = ComfyUI / Stable Diffusion 단계에서 처리 예정
+```
+
+## 지식창고 구조
+
+```text
+knowledge/
+  00_common/
+  00_web_research/
+  01_shopping/
+  02_cs/
+  03_image/
+  04_dev/
+  05_knowledge/
+  06_memory/
+  07_finance/
+  08_automation/
+  09_marketing/
+  10_content/
+```
+
+## 실행 기준
+
+```text
+RUN.bat = 화면만 실행
+RUN_AI_MODE.bat = AI 브릿지 + 실제 AI 모드 실행
+START_BRIDGE.bat = 브릿지만 실행
+CHECK_STATUS.bat = 상태 확인
+OPEN_KNOWLEDGE_FOLDER.bat = 지식창고 폴더 열기
+OPEN_WEB_RESEARCH_FOLDER.bat = 인터넷 자료 저장 폴더 열기
+```
+
+## 다음 우선 작업
+
+```text
+1. 25번 실제 실행 확인
+2. 자료수집 화면에서 키워드 검색 정상 작동 확인
+3. 특정 사이트 제한 검색 확인
+4. 검색 결과 Markdown 저장 확인
+5. 저장된 문서가 지식창고 검색에 포함되는지 확인
+6. BAT 파일 구조 정리
+```
