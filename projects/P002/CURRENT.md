@@ -11,12 +11,14 @@ Ollama, LM Studio, Antigravity, connect-ai, GitHub, 지식 창고, 기억 저장
 현재 기준:
 - P001은 인력관리/근태/급여 프로젝트로 유지한다.
 - P002는 1인 기업 AI 사무실/자동화 시스템 전용 프로젝트로 분리한다.
-- connect-ai는 Antigravity / VS Code / Cursor에서 사용하는 로컬 AI 작업자 참고 소스로 본다.
+- 성조님이 실제 Antigravity에서 사용 중인 connect-ai 기준 저장소는 `https://github.com/sungjo2002/connect-ai.git` 이다.
+- `https://github.com/wonseokjung/connect-ai.git` 는 원본/참고 저장소로 본다.
+- P002에서 connect-ai를 분석하거나 수정할 때는 `sungjo2002/connect-ai`를 1차 기준으로 한다.
 - P002는 connect-ai의 개발 AI, 지식창고, 기억 저장소, GitHub 자동화 구조를 참고하되 성조님 업무용으로 확장한다.
 
 우선순위:
 1. P002 기준 문서 생성
-2. connect-ai 구조 분석
+2. `sungjo2002/connect-ai` 구조 분석
 3. Ollama / LM Studio 연결 확인
 4. 명령 입력기 구조 설계
 5. 지식 창고 구조 설계
@@ -32,6 +34,6 @@ Ollama, LM Studio, Antigravity, connect-ai, GitHub, 지식 창고, 기억 저장
 - 서버 파일 자동 수정
 
 다음 작업:
-- connect-ai 소스 구조 확인
+- `sungjo2002/connect-ai` 소스 구조 확인
 - P002 역할 AI 1차 목록 정리
 - 지식 창고/기억 저장소 설계 확정
